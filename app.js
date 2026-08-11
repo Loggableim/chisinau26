@@ -430,6 +430,16 @@ function addResearchStamp(){
 }
 addResearchStamp();
 
+function addDeutschlandticketFact(){
+  if(!location.pathname.endsWith('return.html')&&!location.pathname.endsWith('return-trips.html'))return;
+  if(document.querySelector('.deutschlandticket-fact'))return;
+  const target=document.querySelector('.next-prev');if(!target)return;
+  const section=document.createElement('section');section.className='section callout deutschlandticket-fact';
+  section.innerHTML='<div class="lang-de"><div class="section-kicker">DEUTSCHLAND-WEITERFAHRT · PREISSTAND 2026</div><h2>Deutschlandticket korrekt eingerechnet</h2><p>Das reguläre Deutschlandticket kostet seit Januar 2026 <b>63 € pro Monat</b>. Es gilt im deutschen Nahverkehr und Regionalverkehr, nicht in ICE/IC/EC. Für Routen über Berlin, Hannover oder Frankfurt ist dieser Betrag nur anzusetzen, wenn noch kein Ticket vorhanden ist.</p><a class="place-link" target="_blank" rel="noopener" href="https://www.bundesregierung.de/breg-de/bundesregierung/bundeskanzleramt/deutschlandticket-2134074">Offizielle Tarifinfo ↗</a></div><div class="lang-uk" hidden><div class="section-kicker">ПРОЇЗД НІМЕЧЧИНОЮ · ЦІНА 2026</div><h2>Deutschlandticket враховано правильно</h2><p>З січня 2026 року звичайний Deutschlandticket коштує <b>63 € на місяць</b>. Він діє в місцевому та регіональному транспорті Німеччини, але не в ICE/IC/EC. Для маршрутів через Берлін, Ганновер або Франкфурт цю суму додаємо лише якщо квиток ще не придбаний.</p><a class="place-link" target="_blank" rel="noopener" href="https://www.bundesregierung.de/breg-de/bundesregierung/bundeskanzleramt/deutschlandticket-2134074">Офіційна інформація про тариф ↗</a></div>';
+  target.before(section);
+}
+addDeutschlandticketFact();
+
 function addRejectedRouteNote(){
   if(!location.pathname.endsWith('return-trips.html')||document.querySelector('.rejected-route-note'))return;
   const target=document.querySelector('.ground-facts');if(!target)return;
