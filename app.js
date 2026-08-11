@@ -298,7 +298,8 @@ function hideUnverifiedPriceRanges(){
   document.querySelectorAll('.main .booking-line b,.main .day-cost,.main .day-hook,.main .source-note,.main p').forEach(el=>{
     if(el.closest('.return-price-conflict'))return;
     const replacement=el.closest('.lang-uk')?'Ціна відкрита':'Preis offen';
-    el.innerHTML=el.innerHTML.replace(pattern,replacement);
+    const range=/\b[0-9][0-9.,]*\s*[–-]\s*[0-9][0-9.,]*\s*(?:€|EUR|US\$|CNY|RON|zł)/gi;
+    el.innerHTML=el.innerHTML.replace(pattern,replacement).replace(range,replacement);
   });
 }
 hideUnverifiedPriceRanges();
