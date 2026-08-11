@@ -236,7 +236,7 @@ function scrubUndefinedText(){
   const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
   const nodes=[];
   while(walker.nextNode())nodes.push(walker.currentNode);
-  nodes.forEach(node=>{if(/\bundefined\b/i.test(node.nodeValue))node.nodeValue=node.nodeValue.replace(/\bundefined\b/gi,'Weitere Optionen');});
+  nodes.forEach(node=>{if(/\bundefined\b/i.test(node.nodeValue))node.nodeValue=node.nodeValue.replace(/\bundefined\b/gi,'Weitere Optionen');if(node.nodeValue.includes('${profile.theme}'))node.nodeValue=node.nodeValue.replaceAll('${profile.theme}. ','Reiseideen. ');});
 }
 scrubUndefinedText();
 new MutationObserver(scrubUndefinedText).observe(document.body,{childList:true,subtree:true});
@@ -439,6 +439,18 @@ function addDeutschlandticketFact(){
   target.before(section);
 }
 addDeutschlandticketFact();
+
+function addAccommodationNavigation(){const active=location.pathname.endsWith('accommodations.html');document.querySelectorAll('.navlinks').forEach(nav=>{if(!nav.querySelector('[href="accommodations.html"]'))nav.insertAdjacentHTML('beforeend',`<a class="${active?'active':''}" href="accommodations.html">${activeLanguage==='uk'?'Житло':'Unterkünfte'}</a>`);});}
+addAccommodationNavigation();
+
+function addIasiDortmundReturn(){
+  if(!location.pathname.endsWith('return.html')||document.querySelector('.iasi-dortmund-return'))return;
+  const target=document.querySelector('.next-prev')||document.querySelector('main');if(!target)return;
+  const section=document.createElement('section');section.className='section iasi-dortmund-return';
+  section.innerHTML=`<div class="lang-de"><div class="section-kicker">ONE-WAY · BOOKING-SCAN · 10.09.2026</div><h2>Iași → Dortmund · günstige Deutschland-Option</h2><article class="day-card day-story"><div class="day-story-head"><div><div class="section-kicker">NEUE OPTION</div><h3>Iași International Airport (IAS) → Dortmund (DTM)</h3></div><b class="day-cost">Preis im offenen Booking-Scan</b></div><div class="booking-line"><span>Datum</span><b>10.09.2026 · One-way</b></div><div class="booking-line"><span>Route</span><b>IAS → DTM · Booking.com</b></div><p>Diese Suche ist als zusätzliche Rückreiseoption für euch beide hinterlegt. Der geöffnete Link führt direkt zur datierten Booking-Flugsuche; der Endpreis und die Gepäckbedingungen werden dort pro Person angezeigt. Anschließend weiter mit Deutschlandticket/Regionalverkehr Richtung Marktheidenfeld.</p><p class="day-tip"><b>Wichtig:</b> Vor dem Bezahlen beide Passagiere, Gepäck und den tatsächlichen Endpreis auswählen und prüfen.</p><a class="place-link" target="_blank" rel="noopener" href="https://flights.booking.com/flights/IAS.AIRPORT-DTM.AIRPORT?type=ONEWAY&amp;adults=1&amp;cabinClass=ECONOMY&amp;from=IAS.AIRPORT&amp;to=DTM.AIRPORT&amp;fromCountry=RO&amp;toCountry=Germany&amp;fromLocationName=Ia%C8%99i+International+Airport&amp;toLocationName=Dortmund&amp;depart=2026-09-10&amp;sort=BEST&amp;travelPurpose=leisure&amp;toCountryCode=DE&amp;sortBy=cheapest">Booking-Flugsuche öffnen ↗</a></article></div><div class="lang-uk" hidden><div class="section-kicker">ONE-WAY · ПОШУК BOOKING · 10.09.2026</div><h2>Ясси → Дортмунд · доступний варіант до Німеччини</h2><article class="day-card day-story"><div class="day-story-head"><div><div class="section-kicker">НОВИЙ ВАРІАНТ</div><h3>Міжнародний аеропорт Ясси (IAS) → Дортмунд (DTM)</h3></div><b class="day-cost">Ціна у відкритому пошуку Booking</b></div><div class="booking-line"><span>Дата</span><b>10.09.2026 · в один бік</b></div><div class="booking-line"><span>Маршрут</span><b>IAS → DTM · Booking.com</b></div><p>Цей пошук додано як додатковий варіант повернення для вас обох. Посилання відкриває датований пошук Booking; кінцеву ціну та багаж видно там для кожного пасажира. Далі можна їхати Deutschlandticket/регіональним транспортом до Марктгайденфельда.</p><p class="day-tip"><b>Важливо:</b> Перед оплатою перевірте обох пасажирів, багаж і кінцеву суму.</p><a class="place-link" target="_blank" rel="noopener" href="https://flights.booking.com/flights/IAS.AIRPORT-DTM.AIRPORT?type=ONEWAY&amp;adults=1&amp;cabinClass=ECONOMY&amp;from=IAS.AIRPORT&amp;to=DTM.AIRPORT&amp;fromCountry=RO&amp;toCountry=Germany&amp;fromLocationName=Ia%C8%99i+International+Airport&amp;toLocationName=Dortmund&amp;depart=2026-09-10&amp;sort=BEST&amp;travelPurpose=leisure&amp;toCountryCode=DE&amp;sortBy=cheapest">Відкрити пошук Booking ↗</a></article></div>`;
+  target.before(section);
+}
+addIasiDortmundReturn();
 
 function addRejectedRouteNote(){
   if(!location.pathname.endsWith('return-trips.html')||document.querySelector('.rejected-route-note'))return;
