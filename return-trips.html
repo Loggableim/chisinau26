@@ -134,6 +134,12 @@
     <div class="next-prev"><a href="chisinau.html">← Chișinău</a><a href="index.html">Übersicht →</a></div>
   </main>
   <footer class="footer"><div class="shell footer-inner"><span>Chișinău 26</span><span>Rückreise-Scan · 11.08.2026</span></div></footer>
-  <script src="app.js"></script>
+  <script>
+    document.querySelectorAll('[data-lang]').forEach(button=>button.addEventListener('click',()=>{
+      document.querySelectorAll('[data-lang]').forEach(item=>item.classList.toggle('active',item===button));
+      document.querySelectorAll('.lang-de').forEach(item=>item.hidden=button.dataset.lang!=='de');
+      document.querySelectorAll('.lang-uk').forEach(item=>item.hidden=button.dataset.lang!=='uk');
+    }));
+  </script>
 </body>
 </html>
