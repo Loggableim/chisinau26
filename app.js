@@ -1,43 +1,60 @@
-const cityIdeas = {
-  varna: ['Sea Garden Walk-and-talk','Strand und erster Badeeindruck','Kathedrale und Architektur-Details','Hafen bei Sonnenuntergang','Markthalle: lokale Snacks testen','Street-Walk durch die Innenstadt','Römische Bäder als Kultur-Highlight','Gutes Beach-Food bewusst genießen','Optionaler Abstecher nach Golden Sands','Flughafen-zu-Strand-Auftaktvideo'],
-  constanta: ['Piața Ovidiu und Altstadt','Casino am Meer: Geschichte und Bilder','Promenade bei Sonnenuntergang','Strand-Check: Stadtstrand vs. ruhiger Spot','Hafen und Fischerboote','Märchenhafte Moschee von außen','Lokales Seafood testen','Aqua Magic als optionaler Erlebnis-Stopp','Street-Walk mit „Was kostet ein Abend?“','Nacht-zu-Morgen-Transit-Folge'],
-  tulcea: ['Hafen und Donauufer','Sonnenuntergang an der Donau','Delta-Museum besuchen','Vogel- und Naturbeobachtung','Lokales Fischgericht probieren','Promenade als ruhiger Vlog-Teil','Kleine Bootsfahrt als bezahltes Upgrade','Markt und regionale Produkte','Früher Morgen am Wasser','„Lohnt sich das Delta?“-Mini-Doku'],
-  galati: ['Donaupromenade','Faleza und Sonnenuntergang','Altstadt- und Architektur-Walk','Parks und Skulpturen entdecken','Lokales Café testen','Street-Food oder Restaurantvergleich','Hafenstimmung und Schiffe','Science-Museum als Indoor-Option','Reise-Recap der rumänischen Etappen','Grenzübertritt nach Moldova dokumentieren'],
-  chisinau: ['Zentrum und Boulevard','Kathedrale und Park','Zentralmarkt: Snacks und Eindrücke','Nationalmuseum oder Kunstmuseum','Lokale Weinbar besuchen','Gutes moldauisches Abendessen','Orheiul Vechi als großer Ausflug','Cricova oder Mileștii Mici als Wein-Erlebnis','Tagestrip nach Transnistrien prüfen','Finale: 10 Tage Reise-Recap'],
+document.head.insertAdjacentHTML('beforeend', `<style>
+.section-lead{max-width:760px;color:var(--muted);margin-top:-10px}.explorer{scroll-margin-top:20px}.explorer-controls{display:flex;gap:12px;flex-wrap:wrap;align-items:end;margin:20px 0}.explorer-controls label{display:grid;gap:5px;color:var(--muted);font-size:.82rem;font-weight:800}.explorer-controls select,.explorer-controls input{font:inherit;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 12px;min-width:210px}.search-label input{min-width:280px}.place-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.place-card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 8px 28px #0f172a08}.place-image{display:block;position:relative;height:170px;background:#dbeafe;overflow:hidden}.place-image img{width:100%;height:100%;object-fit:cover;transition:transform .25s}.place-image:hover img{transform:scale(1.05)}.place-image span{position:absolute;right:10px;bottom:10px;padding:5px 8px;border-radius:999px;background:#0c1424d9;color:#fff;font-size:.72rem;font-weight:800}.place-body{padding:16px}.place-top{display:flex;justify-content:space-between;gap:8px;align-items:center}.place-tag{font-size:.68rem;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);font-weight:900}.place-number{color:var(--muted);font-size:.78rem;font-weight:900}.place-body h3{margin:7px 0 5px;font-size:1.08rem}.place-body p{color:var(--muted);font-size:.9rem;margin:0 0 10px}.place-body details{border-top:1px solid var(--line);padding-top:9px}.place-body summary{cursor:pointer;font-weight:800;font-size:.84rem}.place-body details p{margin-top:8px;font-size:.82rem}.place-link{display:inline-block;margin-top:8px;color:var(--accent);font-size:.82rem;font-weight:850;text-decoration:none}.feature-rotator{display:grid;grid-template-columns:1fr auto auto;gap:14px;align-items:center;margin:22px 0;padding:22px;border-radius:20px;background:linear-gradient(120deg,#17112d,#123b32);color:#fff}.feature-rotator h3{margin:3px 0}.feature-rotator p{margin:0;color:#cbd5e1}.feature-rotator a{color:#bbf7d0;text-decoration:none;font-weight:850;white-space:nowrap}.feature-rotator button{border:1px solid #ffffff55;background:#ffffff12;color:#fff;border-radius:999px;width:38px;height:38px;cursor:pointer;font-size:1.2rem}@media(max-width:900px){.place-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:620px){.place-grid{grid-template-columns:1fr}.feature-rotator{grid-template-columns:1fr}.search-label input{min-width:210px}}
+</style>`);
+
+document.head.insertAdjacentHTML('beforeend','<style>.source-note{color:var(--muted);font-size:.84rem;margin-top:-8px}.source-note a{color:var(--accent);font-weight:800}</style>');
+const imagePool = [
+  'https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=80',
+  'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80',
+  'https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=900&q=80',
+  'https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&w=900&q=80',
+  'https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=900&q=80',
+];
+
+const profiles = {
+  varna: {name:'Varna', theme:'Schwarzes Meer, Park, Hafen und bulgarische Küche', sights:['Sea Garden','Kathedrale der Himmelfahrt','Römische Thermen','Archäologisches Museum','Aladzha-Kloster','Dolphinarium','Varna Aquarium','Hafenpromenade','Varna Beach','Euxinograd-Palast'], food:['Happy Bar & Grill','Staria Chinar','Morski Valk','The Sea Terrace','Burov','Sundays Coffee','Muro','Restaurant Marche','Sweet Parmy',' lokalen Bäcker testen'], hidden:['Graffiti in der Innenstadt','Kleine Gassen hinter der Fußgängerzone','Fischerboote am Südhafen','Sonnenaufgang am Strand','Park-Bänke im Sea Garden','Lokaler Markt am Kolhoz Pazar','Blick vom Panoramaweg','Ruhiger Strandabschnitt Asparuhovo','Abendliche Promenade','Street-Art-Fotowalk'], experiences:['Strandtag mit Vlog','Balkan-Frühstück','Golden Sands als Tagestrip','Kajak oder SUP prüfen','Sonnenuntergang am Hafen','Lokales Bier verkosten','Foto-Challenge im Sea Garden','Römische Geschichte als Short','Busfahrt-Experiment','Ankunftsfolge vom Flughafen bis zum Meer']},
+  constanta: {name:'Constanța', theme:'Schwarzes Meer, Altstadt, Casino und Hafen', sights:['Casino von Constanța','Piața Ovidiu','National History Museum','Große Moschee','Römische Mosaike','Aquarium','Delfinarium','Tomis Marina','Hafenpromenade','Art-Nouveau-Häuser'], food:['Reyna Restaurant','Bacaro Port','Nikos Greek Taverna','La Scoica Land','GastroBar','Souvlaki Bar','Rozmarine','Taverna Sarbului','Sago Urban Cuisine','Fischmarkt testen'], hidden:['Altstadt-Nebenstraßen','Dachterrasse mit Hafenblick','Leere Strandabschnitte am Morgen','Street-Art am Hafen','Historische Villen fotografieren','Mole bei Wind','Lokale Konditorei','Abendliche Piața Ovidiu','Fähranleger beobachten','Sonnenuntergang am Casino'], experiences:['Casino-Architektur bei Tag und Nacht','Strandvergleich Mamaia vs. Stadtstrand','Seafood-Tasting','Aqua Magic als bezahltes Upgrade','Hafen-Walk-and-talk','Moschee und Altstadtgeschichte','Nachtzug-/Bus-Story','Foodbudget-Challenge','Morgenbad im Schwarzen Meer','Eine Nacht in Constanța als Mini-Doku']},
+  tulcea: {name:'Tulcea', theme:'Donau, Delta, Natur und Fischküche', sights:['Donaudelta-Museum','Independence Monument','Hafen von Tulcea','Art Museum','Ethnography Museum','Celic-Dere-Kloster','Parcul Ciuperca','Faleza Tulcea','Amunet-Tourismuszentrum','Macin-Gebirge-Ausblick'], food:['Ivan Pescar','La Liman','Restaurant Central','Casa Dobrogeana','Hotel Delta Restaurant','Faleza-Fischlokal','Pensiunea Delta Dunării','Lokaler Grill','Fischsuppe probieren','Marktfrühstück'], hidden:['Frühe Hafenstimmung','Vögel an der Faleza','Sonnenuntergang am Ciuperca-See','Kleine Seitenstraßen','Lokaler Markt','Fischer beim Beladen','Leise Morgenrunde am Wasser','Dorfkirche im Umland','Blick auf die Boote','Nachtaufnahmen am Hafen'], experiences:['Delta-Bootstour als bewusstes Upgrade','Vogelbeobachtung','Fischküche testen','Museum bei Regen','Sonnenuntergangs-Vlog','Halbtagesausflug ins Delta','Kajak-Option prüfen','Donauschiffe beobachten','Naturgeräusche für YouTube aufnehmen','Lohnt sich Tulcea ohne große Tour?'],},
+  galati: {name:'Galați', theme:'Donaupromenade, Museen, Parks und rumänischer Alltag', sights:['Faleza Dunării','Museum of Natural Sciences','Galați History Museum','Botanical Garden','Public Garden','Precista Church','Nicolae Mantu Museum','Dunărea de Jos University','Hafenbereich','Turnul de Televiziune'], food:['Blue Aqua','Union Jack','Heaven Restaurant','Restaurant Bordeaux','Teatris Restaurant','C House Lounge','Craft beer spot','Lokale Patisserie','Faleza-Café','Rumänische Hausmannskost'], hidden:['Skulpturen an der Faleza','Sonnenuntergang am Donauufer','Alte Villen im Zentrum','Kleine Buchläden','Lokaler Wochenmarkt','Street-Art-Runde','Morgenkaffee an der Promenade','Fischer und Schiffe','Ruhige Parkbank mit Flussblick','Nachtlichter der Faleza'], experiences:['Donau-Walk bei golden hour','Museum als Schlechtwetterplan','Restaurantvergleich','Parks und Skulpturen filmen','Lokales Frühstück','Hafenatmosphäre','City-Story in 60 Sekunden','Grenzregion erklären','Busfahrt nach Moldova vorbereiten','Letzter Rumänien-Abend als Recap']},
+  chisinau: {name:'Chișinău', theme:'Märkte, Parks, Wein, Geschichte und Moldau-Abenteuer', sights:['Kathedrale der Geburt des Herrn','Triumphbogen','Nationalmuseum für Geschichte','Nationales Kunstmuseum','Valea Morilor Park','Dendrarium Park','Central Market','Pushkin Museum','Rose Valley Park','Muzeul Satului'], food:['La Plăcinte','Propaganda Café','Carpe Diem Wine Shop','Gök-Oguz','Pegas Terrace','Tucano Coffee','Crème de la Crème','Eli Pili','Andy’s Pizza','lokale Plăcinte-Bäckerei'], hidden:['Innenhöfe im Zentrum','Street-Art-Runde','Lokaler Markt am Morgen','Ruhige Wege in Valea Morilor','Sonnenuntergang am See','Weinbar-Nebenraum','Sowjetische Architekturdetails','Kleine Buchhandlung','Dendrarium im Frühlicht','Nachtspaziergang am Boulevard'], experiences:['Orheiul Vechi als Tagestrip','Cricova-Weinkeller','Mileștii Mici als Upgrade','Moldauisches Wein-Tasting','Transnistrien-Tagestrip prüfen','Food-Tour durch den Markt','Parks-Picknick','Kunst- und Museumstag','YouTube-Finale mit Reisebudget','10-Tage-Chișinău-Videotagebuch']}
 };
 
-function addVideoIdeas(){
-  const key = location.pathname.split('/').pop().replace('.html','');
-  const ideas = cityIdeas[key];
-  const target = document.querySelector('.next-prev');
-  if (!ideas || !target) return;
-  const section = document.createElement('section');
-  section.className = 'section ideas';
-  section.innerHTML = '<div class="section-kicker">10 IDEEN · ERLEBNIS & VIDEO</div><h2>Was wir hier unternehmen und drehen können</h2><div class="tips">' + ideas.map((idea, i) => `<div><b>${String(i + 1).padStart(2, '0')} · CONTENT</b>${idea}</div>`).join('') + '</div>';
-  target.before(section);
+Object.assign(profiles.varna,{source:'https://visit.varna.bg/en/Explore-Varna.html',sourceLabel:'Visit Varna'});
+Object.assign(profiles.constanta,{source:'https://www.minac.ro/',sourceLabel:'MINAC · Museen & Geschichte'});
+Object.assign(profiles.tulcea,{source:'https://danubedelta.org/en/navigable-routes-in-the-danube-delta/',sourceLabel:'Danube Delta · Routen & Regeln'});
+Object.assign(profiles.galati,{source:'https://museumgl.ro/',sourceLabel:'Museum Galați'});
+Object.assign(profiles.chisinau,{source:'https://visit.chisinau.md/en/',sourceLabel:'Visit Chișinău'});
+function esc(value){return value.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function mapLink(city, item){return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item+' '+city)}`;}
+function buildItems(profile){
+  const groups = [['Sehenswürdigkeit',profile.sights],['Restaurant & Café',profile.food],['Hidden Spot',profile.hidden],['Erlebnis & Video',profile.experiences]];
+  return groups.flatMap(([category,items]) => items.map((item,index) => ({category,item,description:`${item} ist ein guter ${category.toLowerCase()}-Stopp in ${profile.name}. Wir planen ihn flexibel ein und entscheiden vor Ort nach Zeit, Wetter und Stimmung.`,index})));
 }
-
+function card(city,item,index){
+  const image=imagePool[index%imagePool.length];
+  return `<article class="place-card" data-category="${esc(item.category)}"><a class="place-image" href="${mapLink(city,item.item)}" target="_blank" rel="noopener"><img src="${image}" alt="${esc(item.item)}" loading="lazy"><span>↗ Karte</span></a><div class="place-body"><div class="place-top"><span class="place-tag">${esc(item.category)}</span><span class="place-number">${String(index+1).padStart(2,'0')}</span></div><h3>${esc(item.item)}</h3><p>${esc(item.description)}</p><details><summary>Mehr dazu</summary><p>Link öffnen, Öffnungszeiten und aktuelle Preise prüfen. Für den Vlog eignen sich besonders Atmosphäre, Anreise und ein ehrliches Fazit.</p></details><a class="place-link" href="${mapLink(city,item.item)}" target="_blank" rel="noopener">Ort auf Maps öffnen →</a></div></article>`;
+}
+function addCityExplorer(){
+  const key=location.pathname.split('/').pop().replace('.html','');
+  const profile=profiles[key]; const target=document.querySelector('.next-prev');
+  if(!profile || !target) return;
+  const items=buildItems(profile);
+  const section=document.createElement('section'); section.className='section explorer';
+  section.innerHTML=`<div class="section-kicker">${items.length} IDEEN FÜR ${profile.name.toUpperCase()}</div><h2>Sehen, essen, entdecken und drehen</h2><p class="section-lead">${profile.theme}. Die Liste ist Inspiration, kein Pflichtprogramm: Wir wählen vor Ort die besten Kombinationen.</p><div class="feature-rotator" aria-live="polite"><div><span class="section-kicker">HEUTE IM FOKUS</span><h3></h3><p></p></div><a target="_blank" rel="noopener">Ort öffnen →</a><button type="button" aria-label="Nächstes Highlight">↻</button></div><div class="explorer-controls"><label>Bereich <select><option value="all">Alles anzeigen</option><option>Sehenswürdigkeit</option><option>Restaurant & Café</option><option>Hidden Spot</option><option>Erlebnis & Video</option></select></label><label class="search-label">Suchen <input type="search" placeholder="z. B. Hafen, Markt, Wein ..."></label></div><div class="place-grid"></div>`;
+  target.before(section);
+  const sourceNote=document.createElement('p'); sourceNote.className='source-note'; sourceNote.innerHTML=`Recherche: <a href="${profile.source}" target="_blank" rel="noopener">${profile.sourceLabel}</a> · Öffnungszeiten, Preise und Verfügbarkeit bitte vorab prüfen.`; section.querySelector('.section-lead').after(sourceNote);
+  const grid=section.querySelector('.place-grid'), select=section.querySelector('select'), search=section.querySelector('input');
+  function render(){const q=search.value.toLowerCase(); grid.innerHTML=items.filter(x=>(select.value==='all'||x.category===select.value)&&(`${x.item} ${x.description}`).toLowerCase().includes(q)).map((x,i)=>card(profile.name,x,items.indexOf(x))).join(''); grid.querySelectorAll('.place-body').forEach(body=>body.insertAdjacentHTML('beforeend',`<a class="place-link" href="${profile.source}" target="_blank" rel="noopener">${profile.sourceLabel} ↗</a>`));}
+  select.addEventListener('change',render); search.addEventListener('input',render); render();
+  let rotatorIndex=0; const title=section.querySelector('.feature-rotator h3'), desc=section.querySelector('.feature-rotator p'), link=section.querySelector('.feature-rotator a');
+  function rotate(){const x=items[rotatorIndex%items.length]; title.textContent=x.item; desc.textContent=x.description; link.href=mapLink(profile.name,x.item); rotatorIndex++;}
+  section.querySelector('.feature-rotator button').addEventListener('click',rotate); rotate(); setInterval(rotate,7000);
+}
 function addHomeVideoPlan(){
-  if (location.pathname.endsWith('.html') && !location.pathname.endsWith('index.html')) return;
-  const target = document.querySelector('.privacy-note');
-  if (!target) return;
-  const section = document.createElement('section');
-  section.className = 'section callout';
-  section.innerHTML = '<div class="lang-de"><div class="section-kicker">YOUTUBE-PLAN</div><h2>Aus der Reise wird eine Serie</h2><p>Wir bleiben preisbewusst, gönnen uns aber gezielt Erlebnisse, gutes Essen und Ausflüge, die sich auch im Video lohnen. Jede Stadt bekommt eine eigene Folge mit Ankunft, zehn Ideen und einem ehrlichen Fazit.</p><div class="hero-meta"><span>🎥 Ankunfts-Vlog</span><span>🍽️ Food & lokale Spots</span><span>🗺️ Ausflüge</span><span>🎬 Tagesfazit</span></div></div></section>';
-  target.before(section);
+  const target=document.querySelector('.privacy-note'); if(!target) return;
+  const section=document.createElement('section'); section.className='section callout'; section.innerHTML='<div class="lang-de"><div class="section-kicker">YOUTUBE-PLAN</div><h2>Aus der Reise wird eine Serie</h2><p>Wir bleiben preisbewusst, gönnen uns aber gezielt Erlebnisse, gutes Essen und Ausflüge, die sich auch im Video lohnen.</p></div></section>'; target.before(section);
 }
-
-document.querySelectorAll('.privacy-note').forEach(el => el.remove());
-
-function setLanguage(lang){
-  document.documentElement.lang = lang === 'uk' ? 'uk' : 'de';
-  document.querySelectorAll('.lang-de').forEach(el => el.hidden = lang !== 'de');
-  document.querySelectorAll('.lang-uk').forEach(el => el.hidden = lang !== 'uk');
-  document.querySelectorAll('[data-lang]').forEach(btn => btn.classList.toggle('active', btn.dataset.lang === lang));
-  localStorage.setItem('trip-lang', lang);
-}
-
-document.querySelectorAll('[data-lang]').forEach(btn => btn.addEventListener('click', () => setLanguage(btn.dataset.lang)));
-setLanguage(localStorage.getItem('trip-lang') || 'de');
-addVideoIdeas();
-addHomeVideoPlan();
+document.querySelectorAll('.privacy-note').forEach(el=>el.remove());
+function setLanguage(lang){document.documentElement.lang=lang==='uk'?'uk':'de';document.querySelectorAll('.lang-de').forEach(el=>el.hidden=lang!=='de');document.querySelectorAll('.lang-uk').forEach(el=>el.hidden=lang!=='uk');document.querySelectorAll('[data-lang]').forEach(btn=>btn.classList.toggle('active',btn.dataset.lang===lang));localStorage.setItem('trip-lang',lang);}
+document.querySelectorAll('[data-lang]').forEach(btn=>btn.addEventListener('click',()=>setLanguage(btn.dataset.lang)));
+setLanguage(localStorage.getItem('trip-lang')||'de'); addCityExplorer(); addHomeVideoPlan();
