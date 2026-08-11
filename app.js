@@ -401,3 +401,12 @@ function addResearchStamp(){
   target.before(section);
 }
 addResearchStamp();
+
+function addRejectedRouteNote(){
+  if(!location.pathname.endsWith('return-trips.html')||document.querySelector('.rejected-route-note'))return;
+  const target=document.querySelector('.ground-facts');if(!target)return;
+  const section=document.createElement('section');section.className='section rejected-route-note';
+  section.innerHTML='<div class="lang-de"><div class="section-kicker">GEPRÜFT · NICHT EINGERECHNET</div><h2>Bukarest → Budapest bleibt offen</h2><p>FlixBus/Omio zeigen die Strecke, aber für 09.–12.09. war kein datierter Checkout mit eindeutigem Endpreis abrufbar. Deshalb keine künstliche Gesamtsumme und keine fertige Anschlussroute auf dieser Seite.</p><a class="place-link" target="_blank" rel="noopener" href="https://www.omio.co.uk/coaches/bucharest/budapest">Omio-Strecke prüfen ↗</a></div><div class="lang-uk" hidden><div class="section-kicker">ПЕРЕВІРЕНО · НЕ ВРАХОВУЄМО</div><h2>Бухарест → Будапешт залишається відкритим</h2><p>FlixBus/Omio показують цей маршрут, але для 09–12.09 не вдалося відкрити checkout із конкретною датою та кінцевою ціною. Тому ми не вигадуємо загальну суму й не показуємо готове сполучення.</p><a class="place-link" target="_blank" rel="noopener" href="https://www.omio.co.uk/coaches/bucharest/budapest">Перевірити маршрут Omio ↗</a></div>';
+  target.before(section);
+}
+addRejectedRouteNote();
