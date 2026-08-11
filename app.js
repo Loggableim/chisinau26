@@ -369,7 +369,7 @@ new MutationObserver(()=>setTimeout(enforceConcreteReturnPrices,0)).observe(docu
 
 // Decode legacy UTF-8-as-Windows-1252 text that can still occur in old dynamic cards.
 function normalizeLegacyEncoding(root){
-  const map={'€':0x80,'‚':0x82,'„':0x84,'…':0x85,'†':0x86,'‡':0x87,'ˆ':0x88,'‰':0x89,'Š':0x8a,'‹':0x8b,'Œ':0x8c,'Ž':0x8e,'‘':0x91,'’':0x92,'“':0x93,'”':0x94,'•':0x95,'–':0x96,'—':0x97,'˜':0x98,'™':0x99,'š':0x9a,'›':0x9b,'œ':0x9c,'ž':0x9e,'Ÿ':0x9f};
+  const map={'€':0x80,'‚':0x82,'ƒ':0x83,'„':0x84,'…':0x85,'†':0x86,'‡':0x87,'ˆ':0x88,'‰':0x89,'Š':0x8a,'‹':0x8b,'Œ':0x8c,'Ž':0x8e,'‘':0x91,'’':0x92,'“':0x93,'”':0x94,'•':0x95,'–':0x96,'—':0x97,'˜':0x98,'™':0x99,'š':0x9a,'›':0x9b,'œ':0x9c,'ž':0x9e,'Ÿ':0x9f};
   const decode=value=>{
     if(!/[ÃÂâð]/.test(value))return value;
     try{
@@ -398,9 +398,12 @@ new MutationObserver(records=>{records.forEach(record=>record.addedNodes.forEach
 
 // Final safety net for text that arrived already mojibaked from an older page cache.
 function repairVisibleLegacyText(root){
-  const suspicious=/[ÃÂÐÑâð]|�/;
+  // Older cached fragments were encoded more than once (e.g. "RÃƒÆ’Ã…â€œ...").
+  // Keep this last pass deliberately broad and iterative so every injected card,
+  // not just the currently known route copy, is repaired before it is displayed.
+  const suspicious=/[ÃÂÐÑâðƒ�]|[ÈË]/;
   const map={'€':0x80,'‚':0x82,'„':0x84,'…':0x85,'†':0x86,'‡':0x87,'ˆ':0x88,'‰':0x89,'Š':0x8a,'‹':0x8b,'Œ':0x8c,'Ž':0x8e,'‘':0x91,'’':0x92,'“':0x93,'”':0x94,'•':0x95,'–':0x96,'—':0x97,'˜':0x98,'™':0x99,'š':0x9a,'›':0x9b,'œ':0x9c,'ž':0x9e,'Ÿ':0x9f};
-  const decode=value=>{let out=value;for(let i=0;i<3&&suspicious.test(out);i++){try{const bytes=[...out].map(ch=>map[ch]??ch.charCodeAt(0));if(bytes.some(n=>n>255))break;const next=new TextDecoder('utf-8',{fatal:true}).decode(new Uint8Array(bytes));if(next===out)break;out=next}catch{break}}return out};
+  const decode=value=>{let out=value;for(let i=0;i<8&&suspicious.test(out);i++){try{const bytes=[...out].map(ch=>map[ch]??ch.charCodeAt(0));if(bytes.some(n=>n>255))break;const next=new TextDecoder('utf-8',{fatal:true}).decode(new Uint8Array(bytes));if(next===out)break;out=next}catch{break}}return out};
   const walk=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);const nodes=[];while(walk.nextNode())nodes.push(walk.currentNode);
   nodes.forEach(node=>{const fixed=decode(node.nodeValue);if(fixed!==node.nodeValue)node.nodeValue=fixed});
 }
