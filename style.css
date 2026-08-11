@@ -48,6 +48,23 @@
 .return-submenu summary::-webkit-details-marker{display:none}
 .return-submenu[open] summary,.return-submenu summary:hover{background:#ff3ea526;color:#fff}
 .return-submenu:hover .return-submenu-links,.return-submenu:focus-within .return-submenu-links{display:grid}
+.explorer{position:relative}
+.explorer:before{content:'✦';position:absolute;right:5%;top:-26px;color:var(--green);font-size:2rem;transform:rotate(12deg)}
+.explorer .section-lead{max-width:760px;font-size:1.04rem;line-height:1.6}
+.explorer .source-note{padding:10px 13px;border-left:3px solid var(--accent);background:#ff3ea50d;border-radius:0 10px 10px 0;font-size:.82rem}
+.explorer .place-grid{gap:18px}
+.explorer .place-card{overflow:hidden;display:flex;flex-direction:column;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+.explorer .place-card:hover{transform:translateY(-4px);border-color:var(--accent)!important;box-shadow:0 18px 36px #00000055}
+.explorer .place-image{min-height:180px;background:linear-gradient(135deg,#241531,#172f28);position:relative}
+.explorer .place-image img{height:180px;object-fit:cover;opacity:.88}
+.explorer .place-image span{position:absolute;left:12px;bottom:10px;background:#090910c9;border:1px solid #ffffff28;border-radius:999px;padding:5px 8px;font-size:.68rem;color:#fff}
+.explorer .place-body{padding:17px 18px 18px;display:flex;flex-direction:column;flex:1}
+.explorer .place-body h3{font-size:1.1rem;line-height:1.18;margin:9px 0 8px}
+.explorer .place-description{line-height:1.5;flex:1}
+.explorer .place-body details{margin:8px 0 10px;border-top:1px solid var(--line);padding-top:9px;font-size:.82rem}
+.explorer .place-body details summary{cursor:pointer;color:#ff9bca;font-weight:800}
+.explorer .place-body details p{margin:7px 0 0}
+@media(max-width:620px){.explorer:before{right:9px;top:-14px}.explorer .place-image,.explorer .place-image img{min-height:155px;height:155px}.explorer .place-grid{gap:13px}.explorer .place-body{padding:15px}.explorer .place-description{font-size:.92rem}}
 .return-submenu-links{position:absolute;z-index:20;right:0;top:calc(100% + 6px);display:grid;min-width:210px;padding:7px;background:#17112d;border:1px solid #ff3ea566;border-radius:14px;box-shadow:0 12px 30px #0008}
 .return-submenu-links a{color:#ded9ec!important;text-decoration:none;padding:10px 12px;border-radius:9px;white-space:nowrap}
 .return-submenu-links a:hover,.return-submenu-links a.active{background:#ff3ea526;color:#fff!important}
