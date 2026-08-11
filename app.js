@@ -369,3 +369,14 @@ function normalizeLegacyEncoding(root){
 }
 normalizeLegacyEncoding(document.body);
 new MutationObserver(records=>{records.forEach(record=>record.addedNodes.forEach(node=>{if(node.nodeType===Node.ELEMENT_NODE)normalizeLegacyEncoding(node)}))}).observe(document.body,{childList:true,subtree:true});
+
+// Some legacy cards were encoded more than once. Decode those text nodes repeatedly.
+function repairRepeatedEncoding(root){
+  const cp1252={"\u00e2\u201a\xac":0x80,"\u00e2\u20ac\u201c":0x93,"\u00e2\u20ac\x9d":0x94,"\u00e2\u20ac\x93":0x96,"\u00e2\u20ac\x94":0x97,"\u00c3\u0192":0x83,"\u00c5\u0161":0x9a};
+  const once=value=>{try{const bytes=[...value].map(ch=>cp1252[ch]??ch.charCodeAt(0));if(bytes.some(n=>n>255))return value;return new TextDecoder('utf-8',{fatal:true}).decode(new Uint8Array(bytes));}catch{return value}};
+  const walk=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);const nodes=[];
+  while(walk.nextNode())nodes.push(walk.currentNode);
+  nodes.forEach(node=>{let value=node.nodeValue;for(let i=0;i<4&&/[\u00c3\u00c2\u00d0\u00d1\u00e2\u00ef]/.test(value);i++){const next=once(value);if(next===value)break;value=next}node.nodeValue=value});
+}
+repairRepeatedEncoding(document.body);
+new MutationObserver(records=>{records.forEach(record=>record.addedNodes.forEach(node=>{if(node.nodeType===Node.ELEMENT_NODE)repairRepeatedEncoding(node)}))}).observe(document.body,{childList:true,subtree:true});
