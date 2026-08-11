@@ -77,6 +77,8 @@ const profiles={
 profiles.tulcea.groups['Restaurant & Café'].find(x=>x.title==='The Corner Café & Bistro').url='https://tusitulcea.ro/the-corner-cafe-bistro';
 profiles.galati.groups['Restaurant & Café'].find(x=>x.title==='Gaffino').url='https://galaticityapp.ro/places/restaurant-gaffino-galati-oari5wtx5at1qa';
 profiles.galati.groups['Restaurant & Café'].find(x=>x.title==='Gaffino').description='Aktueller Galați-Eintrag mit Adresse und Öffnungszeiten; sonntags laut Listing geschlossen.';
+profiles.varna.groups['Restaurant & Café'].find(x=>x.title==='El Kapan').description='Aktueller Strand-/Promenadenort; Betreiber nennt tägliche 09:00–02:00-Zeiten, saisonale Öffnung beachten.';
+profiles.varna.groups['Restaurant & Café'].find(x=>x.title==='Bodega').url='https://rezzo.bg/rest_menu/Bodega-menu-Ceni.pdf';
 const mediaSearch=query=>`https://commons.wikimedia.org/w/index.php?search=${encodeURIComponent(query)}&title=Special:MediaSearch&type=image`;
 async function commonsImage(query,fallback){
   const get=async q=>{const url=`https://commons.wikimedia.org/w/api.php?action=query&generator=search&gsrnamespace=6&gsrlimit=1&gsrsearch=${encodeURIComponent(q)}&prop=imageinfo&iiprop=url&iiurlwidth=960&format=json&origin=*`;const json=await fetch(url).then(r=>r.json());const page=Object.values(json.query?.pages||{})[0];return page?.imageinfo?.[0];};
