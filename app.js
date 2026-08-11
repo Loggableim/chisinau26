@@ -333,3 +333,4 @@ document.querySelectorAll('.source-status-banner').forEach(box=>{
 // The status banner above is injected after the first repair pass.
 repairMojibake(document.body);
 new MutationObserver(records=>{records.forEach(record=>record.addedNodes.forEach(node=>{if(node.nodeType===Node.ELEMENT_NODE)repairMojibake(node)}));hideUnverifiedPriceRanges();hideUnverifiedPriceRangesUnicode()}).observe(document.body,{childList:true,subtree:true});
+document.querySelectorAll('[data-lang]').forEach(button=>button.addEventListener('click',()=>setTimeout(()=>{repairMojibake(document.body);hideUnverifiedPriceRangesUnicode()},0)));
