@@ -305,7 +305,7 @@ hideUnverifiedPriceRanges();
 
 function repairMojibake(root){
   const marker=/[ÃÂÐÑâ�]/;
-  const decode=s=>{try{const bytes=Uint8Array.from([...s],c=>c.charCodeAt(0));return new TextDecoder('utf-8',{fatal:true}).decode(bytes)}catch{return s}};
+  const decode=s=>s.replace(/[\u0000-\u00ff]+|[^\u0000-\u00ff]+/g,part=>{if(part.charCodeAt(0)>255)return part;try{return new TextDecoder('utf-8',{fatal:true}).decode(Uint8Array.from([...part],c=>c.charCodeAt(0)))}catch{return part}});
   const walk=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);
   const nodes=[];while(walk.nextNode())nodes.push(walk.currentNode);
   nodes.forEach(node=>{if(marker.test(node.nodeValue))node.nodeValue=decode(node.nodeValue)});
