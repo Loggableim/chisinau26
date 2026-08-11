@@ -295,7 +295,7 @@ normalizeReturnHeader();
 function addRoadFlightNav(){
   const active=location.pathname.endsWith('return-trips.html');
   document.querySelectorAll('.navlinks').forEach(nav=>{
-    if(!nav.querySelector('[href="return-trips.html"]'))nav.insertAdjacentHTML('beforeend',`<a class="${active?'active':''}" href="return-trips.html">Road-/Flight-Trips</a>`);
+if(!nav.querySelector('[href="return-trips.html"]'))nav.insertAdjacentHTML('beforeend',`<a class="${active?'active':''}" href="return-trips.html">Roadtrip Rückreise</a>`);
   });
 }
 addRoadFlightNav();
@@ -310,7 +310,7 @@ function buildReturnSubmenu(){
     if(oldReturn)oldReturn.remove();
     if(oldTrips)oldTrips.remove();
     if(nav.querySelector('.return-submenu'))return;
-    const markup=`<details class="return-submenu" ${activeReturn||activeTrips?'open':''}><summary>↩️ Rückreise</summary><div class="return-submenu-links"><a class="${activeReturn?'active':''}" href="return.html">✈️ Direktflüge</a><a class="${activeTrips?'active':''}" href="return-trips.html">🚌 Road-/Flight-Trips</a></div></details>`;
+const markup=`<details class="return-submenu" ${activeReturn||activeTrips?'open':''}><summary>↩️ Rückreise</summary><div class="return-submenu-links"><a class="${activeReturn?'active':''}" href="return.html">✈️ Direktflüge</a><a class="${activeTrips?'active':''}" href="return-trips.html">🚌 Roadtrip Rückreise</a></div></details>`;
     if(returnAnchor?.nextSibling) returnAnchor.parentNode.insertBefore(document.createRange().createContextualFragment(markup),returnAnchor.nextSibling);
     else nav.insertAdjacentHTML('beforeend',markup);
   });
