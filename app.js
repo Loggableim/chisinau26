@@ -302,3 +302,13 @@ function hideUnverifiedPriceRanges(){
   });
 }
 hideUnverifiedPriceRanges();
+
+function repairMojibake(root){
+  const marker=/[ÃÂÐÑâ�]/;
+  const decode=s=>{try{const bytes=Uint8Array.from([...s],c=>c.charCodeAt(0));return new TextDecoder('utf-8',{fatal:true}).decode(bytes)}catch{return s}};
+  const walk=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);
+  const nodes=[];while(walk.nextNode())nodes.push(walk.currentNode);
+  nodes.forEach(node=>{if(marker.test(node.nodeValue))node.nodeValue=decode(node.nodeValue)});
+}
+repairMojibake(document.body);
+new MutationObserver(records=>records.forEach(record=>record.addedNodes.forEach(node=>{if(node.nodeType===Node.ELEMENT_NODE)repairMojibake(node)}))).observe(document.body,{childList:true,subtree:true});
