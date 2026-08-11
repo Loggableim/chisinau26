@@ -124,6 +124,7 @@ addConstantaRoutePlan();function addSourceStatusBanner(){const key=location.path
 addSourceStatusBanner();
 
 function addReturnCityStops(){
+  return;
   if(!location.pathname.endsWith('return.html')||document.querySelector('.return-city-stops'))return;
   const target=document.querySelector('.bucharest-stopover')||document.querySelector('.next-prev');
   if(!target)return;
