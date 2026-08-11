@@ -291,3 +291,11 @@ function normalizeReturnHeader(){
   if(uk)uk.textContent='ПОВЕРНЕННЯ · ГНУЧКІ ДАТИ · 3 АЛЬТЕРНАТИВНІ КОРИДОРИ';
 }
 normalizeReturnHeader();
+
+function addRoadFlightNav(){
+  const active=location.pathname.endsWith('return-trips.html');
+  document.querySelectorAll('.navlinks').forEach(nav=>{
+    if(!nav.querySelector('[href="return-trips.html"]'))nav.insertAdjacentHTML('beforeend',`<a class="${active?'active':''}" href="return-trips.html">Road-/Flight-Trips</a>`);
+  });
+}
+addRoadFlightNav();
