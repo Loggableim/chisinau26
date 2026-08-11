@@ -105,3 +105,10 @@
 /* The return-trips document is intentionally a standalone page; keep its cards responsive even without a page-specific body class. */
 @media(max-width:760px){.detail-grid .day-story{min-width:0}.detail-grid .day-story-head{min-height:0}}
 @media(max-width:480px){.detail-grid .day-story-head{padding:16px}.detail-grid .day-story .day-cost{font-size:.85rem;max-width:125px}.detail-grid .day-story .day-tip{margin-left:16px;margin-right:16px}}
+.venue-exclusion-note{border-color:#ffb00066!important;background:linear-gradient(135deg,#2a1b12,#21142c)!important}
+.venue-exclusion-note .section-kicker{color:#ffd36a}
+.explorer-controls{display:flex;align-items:end;gap:12px;flex-wrap:wrap;padding:14px;margin:18px 0;border:1px solid var(--line);border-radius:16px;background:#ffffff05}
+.explorer-controls label{display:grid;gap:5px;min-width:190px;color:var(--muted);font-size:.76rem;font-weight:850;text-transform:uppercase;letter-spacing:.06em}
+.explorer-controls select,.explorer-controls input{min-height:42px;padding:9px 12px;border:1px solid var(--line);border-radius:10px;font:inherit}
+.result-count{margin-left:auto;padding:9px 11px;color:var(--green);font-size:.82rem;font-weight:850}
+@media(max-width:620px){.explorer-controls{align-items:stretch;flex-direction:column;padding:11px}.explorer-controls label{min-width:0}.explorer-controls select,.explorer-controls input{width:100%}.result-count{margin:0;text-align:center}.research-stamp,.venue-exclusion-note{padding:14px}.research-stamp p,.venue-exclusion-note p{font-size:.88rem}}
