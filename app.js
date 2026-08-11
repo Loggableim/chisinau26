@@ -73,6 +73,8 @@ const profiles={
   'Erlebnis & Video':[E('Cricova-Weinkeller','Unterirdische Weinstadt mit Führung und Verkostung.','https://cricova.md/en/'),E('Mileștii Mici','Riesige unterirdische Weinsammlung; Tour vorab buchen.','https://vinmiltimici.md/'),E('Castel Mimi','Weingut, Restaurant und Architektur als klarer Tagesausflug.','https://castelmimi.md/en/visit-us/'),E('Orheiul Vechi','Felslandschaft, Höhlenklöster und Dorfleben.','https://moldova.travel/en/orheiul-vechi/'),E('Kloster Curchi','Grüne Klosteranlage im Umland.'),E('Kloster Țipova','Höhlenkloster am Dnister mit Wanderwegen.'),E('Soroca-Festung','Längerer Roadtrip ans Dnister-Ufer.'),E('Moldauischer Kochkurs','Plăcinte, Mămăligă oder Sarmale gemeinsam kochen.','https://www.getyourguide.com/chisinau-l1814/cooking-classes-tc107/'),E('Trolleybus-Stadtrundfahrt','Lokale Stadtperspektive mit dem typischen Verkehrsmittel.'),E('Street-Art- und Sowjetarchitektur-Tour','Murals, Wohnhochhäuser und Innenhöfe als konkrete Architekturroute.')]} }
 };
 
+// Current venue-source overrides from the 2026 listing audit.
+profiles.tulcea.groups['Restaurant & Café'].find(x=>x.title==='The Corner Café & Bistro').url='https://tusitulcea.ro/the-corner-cafe-bistro';
 const mediaSearch=query=>`https://commons.wikimedia.org/w/index.php?search=${encodeURIComponent(query)}&title=Special:MediaSearch&type=image`;
 async function commonsImage(query,fallback){
   const get=async q=>{const url=`https://commons.wikimedia.org/w/api.php?action=query&generator=search&gsrnamespace=6&gsrlimit=1&gsrsearch=${encodeURIComponent(q)}&prop=imageinfo&iiprop=url&iiurlwidth=960&format=json&origin=*`;const json=await fetch(url).then(r=>r.json());const page=Object.values(json.query?.pages||{})[0];return page?.imageinfo?.[0];};
