@@ -468,7 +468,7 @@ function renderFixedReturnOnly(){
     document.querySelectorAll('a[href="return-trips.html"]').forEach(a=>a.remove());
     return;
   }
-  if(!location.pathname.endsWith('return.html')||document.querySelector('.fixed-return-only'))return;
+  if(!location.pathname.endsWith('return.html')||document.querySelector('.fixed-return-only')||document.querySelector('.fixed-return-plan'))return;
   ['.extra-return-options','.stopover-plans','.bucharest-stopover','.stopover-gems','.return-city-stops','.slow-return-route','.hybrid-return-route','.iasi-dortmund-return','.ground-facts','.rejected-route-note','.return-price-conflict'].forEach(sel=>document.querySelectorAll(sel).forEach(el=>el.remove()));
   const table=document.querySelector('#return-price-table');
   if(table){const section=table.closest('.section');if(section)section.remove();}
@@ -492,6 +492,10 @@ function addPragueReturnResearch(){
   target.after(s);
 }
 addPragueReturnResearch();
+
+function cleanLegacyNav(){document.querySelectorAll('.navlinks').forEach(nav=>{nav.querySelectorAll('.return-submenu,a[href="return-trips.html"],a[href="iasi-prag.html"]').forEach(el=>el.remove());if(!nav.querySelector('a[href="return.html"]'))nav.insertAdjacentHTML('beforeend','<a href="return.html">Rückreise</a>');});}
+cleanLegacyNav();
+document.querySelectorAll('[data-lang]').forEach(btn=>btn.addEventListener('click',()=>setTimeout(cleanLegacyNav,0)));
 
 function trimReturnFaresToBudget(){
   if(!location.pathname.endsWith('return.html'))return;
