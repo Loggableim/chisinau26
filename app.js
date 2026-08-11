@@ -336,3 +336,18 @@ new MutationObserver(records=>{records.forEach(record=>record.addedNodes.forEach
 document.querySelectorAll('[data-lang]').forEach(button=>button.addEventListener('click',()=>setTimeout(()=>{repairMojibake(document.body);hideUnverifiedPriceRangesUnicode()},0)));
 // Keep the document explicitly marked as UTF-8 for embedded/static previews.
 document.documentElement.setAttribute('data-encoding','utf-8');
+
+// Alternative return cards are research leads; never present undated or "from" fares as totals.
+function enforceConcreteReturnPrices(){
+  if(!location.pathname.endsWith('return.html'))return;
+  document.querySelectorAll('.return-city-stops .day-card').forEach(card=>{
+    const text=card.textContent;
+    if(!/Bukarest|Modlin|Warszawa|Варшава|Будапешт|Budapest/i.test(text))return;
+    card.querySelectorAll('.day-cost').forEach(el=>el.textContent=el.closest('.lang-uk')?'Ціна відкрита':'Preis offen');
+    card.querySelectorAll('.day-block b,.day-tip').forEach(el=>{
+      if(/\b(?:ab|from|від)\b|â‚¬|€|US\$|CNY|zÅ‚|zł/i.test(el.textContent))el.textContent=el.closest('.lang-uk')?'Ціна відкрита':'Preis offen';
+    });
+  });
+}
+enforceConcreteReturnPrices();
+new MutationObserver(()=>setTimeout(enforceConcreteReturnPrices,0)).observe(document.body,{childList:true,subtree:true});
