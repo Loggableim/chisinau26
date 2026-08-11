@@ -116,12 +116,12 @@ function addReturnCityStops(){
   section.className='section return-city-stops';
   section.innerHTML=`
     <div class="lang-de">
-      <div class="section-kicker">KURZER STADT-STOP · 3 ALTERNATIVEN · 11.–13.09.</div>
-      <h2>Vier Stadt-Stopps zur Auswahl</h2>
-      <p class="section-lead">Drei echte Mini-Routen mit Stadtzeit statt einer reinen Flughafen-Umsteige-Kette. Preise sind recherchierte Richtwerte; getrennte Tickets und der genaue Anschluss müssen im Checkout zusammenpassen.</p>
+      <div class="section-kicker">3 BILLIGE RÜCKREISEN · 11.–13.09.</div>
+      <h2>Drei Alternativen wie die Bukarest-Tour</h2>
+      <p class="section-lead">Drei eigenständige Billo-Routen mit kleinem Stadtstopp, konkretem Ablauf und Weiterfahrt. Die Bukarest→Berlin-Tour darüber bleibt der Referenzplan; diese drei Varianten sind echte Alternativen dazu.</p>
       <div class="detail-grid">
         <article class="day-card day-story">
-          <div class="day-story-head"><div><div class="section-kicker">KURZER STADT-STOP · BUKAREST → WIEN · 11.09.</div><h3>⏱️ Bukarest kompakt → Wien</h3></div><b class="day-cost">ab ca. 51 €</b></div>
+          <div class="day-story-head"><div><div class="section-kicker">ALTERNATIVE 1 · BUKAREST → WIEN · 11.09.</div><h3>⏱️ Bukarest kompakt → Wien</h3></div><b class="day-cost">ab ca. 51 €</b></div>
           <p class="day-vibe">Stadtbesuch am Vormittag · anschließend direkt nach Wien</p>
           <p class="day-hook"><b>Video-Hook:</b> Gara de Nord, Calea Victoriei und Altstadt in einem kompakten „4 Stunden Bukarest“-Kapitel.</p>
           <div class="day-block"><div class="booking-line"><span>07:50–08:55</span><b>Wizz Air · RMO → OTP · 29 €</b></div><p>Die bereits geprüfte Morgenverbindung bringt euch früh genug in die Stadt.</p></div>
@@ -131,7 +131,7 @@ function addReturnCityStops(){
           <p><a class="place-link" target="_blank" rel="noopener" href="https://flights.booking.com/flights/RMO-OTP/?type=ONEWAY&amp;adults=1&amp;cabinClass=ECONOMY&amp;from=RMO&amp;to=OTP&amp;depart=2026-09-11">RMO → OTP prüfen ↗</a><a class="place-link" target="_blank" rel="noopener" href="https://www.ryanair.com/flights/gb/en/flights-from-bucharest-to-vienna">OTP → VIE prüfen ↗</a></p>
         </article>
         <article class="day-card day-story">
-          <div class="day-story-head"><div><div class="section-kicker">KURZER STADT-STOP · WARSCHAU · 12.–13.09.</div><h3>🌃 Spät nach Modlin → Warschau-Tag</h3></div><b class="day-cost">ca. 86–98 €</b></div>
+          <div class="day-story-head"><div><div class="section-kicker">ALTERNATIVE 2 · WARSCHAU · 12.–13.09.</div><h3>🌃 Spät nach Modlin → Warschau-Tag</h3></div><b class="day-cost">ca. 86–98 €</b></div>
           <p class="day-vibe">Eine Nacht · Stadtvormittag · Bus nach Berlin</p>
           <p class="day-hook"><b>Video-Hook:</b> Nachtankunft, erster Kaffee in Warschau, Weichselufer und Altstadt – ein sauberer Mini-Roadtrip.</p>
           <div class="day-block"><div class="booking-line"><span>12.09. · 22:50–23:35</span><b>Wizz Air W61422 · RMO → WMI · ab ca. 28 €</b></div><p>Der Flug ist laut Flugplan dienstags, donnerstags und samstags bis 24.10.2026 vorgesehen; der 12.09. fällt auf Samstag.</p></div>
@@ -141,7 +141,7 @@ function addReturnCityStops(){
           <p><a class="place-link" target="_blank" rel="noopener" href="https://www.flight.info/W61422">W61422-Flugplan prüfen ↗</a><a class="place-link" target="_blank" rel="noopener" href="https://global.flixbus.com/bus-routes/bus-warsaw-berlin">Warschau → Berlin prüfen ↗</a></p>
         </article>
         <article class="day-card day-story">
-          <div class="day-story-head"><div><div class="section-kicker">KURZER STADT-STOP · BUKAREST → BUDAPEST · 11./12.09.</div><h3>🌉 Bukarest → Budapest per Nachtbus</h3></div><b class="day-cost">ab ca. 78 €</b></div>
+          <div class="day-story-head"><div><div class="section-kicker">ALTERNATIVE 3 · BUKAREST → BUDAPEST · 11./12.09.</div><h3>🌉 Bukarest → Budapest per Nachtbus</h3></div><b class="day-cost">ab ca. 78 €</b></div>
           <p class="day-vibe">Kurzer Bukarest-Stopp · Nachtfahrt · Budapest am 12./13.09.</p>
           <p class="day-hook"><b>Video-Hook:</b> Zwei Hauptstädte, ein Nachtbus: Kontrast zwischen Bukarests breiten Boulevards und Budapests Donauufer.</p>
           <div class="day-block"><div class="booking-line"><span>11. oder 12.09. · morgens</span><b>RMO → OTP · ab 29 €</b></div><p>Den Morgenflug mit dem bestehenden Bukarest-Stopover kombinieren; die genaue Flugverfügbarkeit für den gewählten Tag im Booking-Link checken.</p></div>
@@ -153,8 +153,8 @@ function addReturnCityStops(){
       </div>
     </div>
     <div class="lang-uk" hidden>
-      <div class="section-kicker">КОРОТКА ЗУПИНКА В МІСТІ · 11–13.09.</div>
-      <h2>Три нові варіанти повернення</h2>
+      <div class="section-kicker">3 ДЕШЕВІ ПОВЕРНЕННЯ · 11–13.09.</div>
+      <h2>Три альтернативи бухарестському маршруту</h2>
       <p class="section-lead">Три справжні міні-маршрути з часом на місто, а не лише пересадка в аеропорту. Ціни — досліджені орієнтири; окремі квитки й точний стикувальний час перевірити під час оплати.</p>
       <div class="detail-grid">
         <article class="day-card"><div class="day-story-head"><div><div class="section-kicker">🇷🇴 → 🇦🇹 · 11.09.</div><h3>⏱️ Бухарест → Відень</h3></div><b class="day-cost">від прибл. 51 €</b></div><p>Ранковий RMO → OTP за 29 €, коротка прогулянка Бухарестом, потім прямий OTP → VIE від 16,99 €. Реалістично від 51–65 € до Відня плюс подальша дорога. Точний рейс на 11.09. і запас часу перевірити окремо.</p><p><a class="place-link" target="_blank" rel="noopener" href="https://www.ryanair.com/flights/gb/en/flights-from-bucharest-to-vienna">Перевірити OTP → VIE ↗</a></p></article>
