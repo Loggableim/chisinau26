@@ -194,26 +194,26 @@ function addDetailedReturnAlternatives(){
   section.className='section detailed-return-alternatives';
   section.innerHTML=`
     <div class="lang-de">
-      <div class="section-kicker">3 WEITERE BILLIG-ROUTEN · AUSFÜHRLICH</div>
-      <h2>Rückreisen mit Stadtstopp statt nur Flughafen</h2>
+      <div class="section-kicker">KURZER STADT-STOP · 3 WEITERE BILLIG-ROUTEN</div>
+      <h2>Drei weitere Stadt-Stopps wie Bukarest</h2>
       <p class="section-lead">Drei zusätzliche Pläne in genau derselben Logik wie der Bukarest-Stop: Ablauf, Puffer, Videomoment und realistisches Budget. Alle bleiben optional und müssen mit dem konkreten Tages-Checkout abgeglichen werden.</p>
       <div class="detail-grid">
         <article class="day-card day-story">
-          <div class="day-story-head"><div><div class="section-kicker">OPTION 1 · 11.09. · BUKAREST → WIEN</div><h3>⏱️ Morgens Bukarest, abends Wien</h3></div><b class="day-cost">51–65 €</b></div>
+          <div class="day-story-head"><div><div class="section-kicker">KURZER STADT-STOP · BUKAREST → WIEN · 11.09.</div><h3>⏱️ Morgens Bukarest, abends Wien</h3></div><b class="day-cost">51–65 €</b></div>
           <p class="day-vibe">Eine Stadt am Vormittag · Weiterflug am Nachmittag</p>
           <div class="timeline"><div class="timeline-row"><div class="timeline-date">07:50–08:55</div><div class="timeline-box"><h3>1 · Nach Bukarest</h3><p>Wizz Air Malta: RMO → OTP, ca. 29 €. Nur Handgepäck einplanen.</p></div></div><div class="timeline-row"><div class="timeline-date">09:35–13:45</div><div class="timeline-box"><h3>2 · Stadtbogen</h3><p>Gara de Nord → Calea Victoriei → Altstadt → Lunch. Das reicht für einen kurzen Dreh ohne Hetze.</p></div></div><div class="timeline-row"><div class="timeline-date">ab Nachmittag</div><div class="timeline-box"><h3>3 · Weiter nach Wien</h3><p>OTP → VIE direkt; Ryanair veröffentlicht die Strecke ab 16,99 €. Die konkrete Uhrzeit für den 11.09. separat prüfen und mindestens 2,5–3 Stunden Puffer lassen.</p></div></div></div>
           <p class="day-tip"><b>Realistisches Budget:</b> ca. 51–65 € bis Wien, danach Zug/Bus nach Tirol oder Deutschland extra. Getrennte Tickets sind kein geschützter Anschluss.</p>
           <p><a class="place-link" target="_blank" rel="noopener" href="https://flights.booking.com/flights/RMO-OTP/?type=ONEWAY&amp;adults=1&amp;cabinClass=ECONOMY&amp;from=RMO&amp;to=OTP&amp;depart=2026-09-11">RMO → OTP prüfen ↗</a> <a class="place-link" target="_blank" rel="noopener" href="https://www.ryanair.com/flights/gb/en/flights-from-bucharest-to-vienna">OTP → VIE prüfen ↗</a></p>
         </article>
         <article class="day-card day-story">
-          <div class="day-story-head"><div><div class="section-kicker">OPTION 2 · 12.–13.09. · WARSCHAU</div><h3>🌃 Spät landen, Stadt drehen, nach Berlin</h3></div><b class="day-cost">86–98 €</b></div>
+          <div class="day-story-head"><div><div class="section-kicker">KURZER STADT-STOP · WARSCHAU · 12.–13.09.</div><h3>🌃 Spät landen, Stadt drehen, nach Berlin</h3></div><b class="day-cost">86–98 €</b></div>
           <p class="day-vibe">Nachtankunft · Warschau-Vormittag · Deutschland am Abend</p>
           <div class="timeline"><div class="timeline-row"><div class="timeline-date">12.09. · 22:50–23:35</div><div class="timeline-box"><h3>1 · Nach Modlin</h3><p>Wizz Air W61422: RMO → WMI. Laut Flugplan fliegt die Verbindung bis 24.10. dienstags, donnerstags und samstags; der 12.09. ist Samstag.</p></div></div><div class="timeline-row"><div class="timeline-date">13.09. · morgens</div><div class="timeline-box"><h3>2 · Warschau kompakt</h3><p>Transfer in die Innenstadt, Kaffee, Altstadt, Weichselufer oder Praga. Ein klarer Dreh statt zehn Sehenswürdigkeiten.</p></div></div><div class="timeline-row"><div class="timeline-date">13.09. · später</div><div class="timeline-box"><h3>3 · Weiter nach Berlin</h3><p>FlixBus Warschau → Berlin ab ca. 32 €. Deutschland erreicht ihr voraussichtlich erst spät am 13.09.; nicht für Heimankunft bis Mittag.</p></div></div></div>
           <p class="day-tip"><b>Realistisches Budget:</b> Flug ca. 28 €, Transfer 6–8 €, Hostel 20–30 € und Bus ab ca. 32 € = ungefähr 86–98 € p. P.</p>
           <p><a class="place-link" target="_blank" rel="noopener" href="https://www.flight.info/W61422">W61422-Flugplan prüfen ↗</a> <a class="place-link" target="_blank" rel="noopener" href="https://global.flixbus.com/bus-routes/bus-warsaw-berlin">Warschau → Berlin prüfen ↗</a></p>
         </article>
         <article class="day-card day-story">
-          <div class="day-story-head"><div><div class="section-kicker">OPTION 3 · 11./12.09. · BUDAPEST</div><h3>🌉 Bukarest am Tag, Budapest über Nacht</h3></div><b class="day-cost">78–95 €</b></div>
+          <div class="day-story-head"><div><div class="section-kicker">KURZER STADT-STOP · BUKAREST → BUDAPEST · 11./12.09.</div><h3>🌉 Bukarest am Tag, Budapest über Nacht</h3></div><b class="day-cost">78–95 €</b></div>
           <p class="day-vibe">Stadtfenster · Nachtbus · Budapest am nächsten Tag</p>
           <div class="timeline"><div class="timeline-row"><div class="timeline-date">morgens</div><div class="timeline-box"><h3>1 · RMO → OTP</h3><p>Mit dem günstigen Morgenflug nach Bukarest; aktuell ist die bekannte Verbindung mit ca. 29 € der Rechenanker.</p></div></div><div class="timeline-row"><div class="timeline-date">09:35–14:00</div><div class="timeline-box"><h3>2 · Bukarest in vier Stunden</h3><p>Gara de Nord, Calea Victoriei, Altstadt und Lunch. Danach rechtzeitig zur Busstation fahren.</p></div></div><div class="timeline-row"><div class="timeline-date">abends/nachts</div><div class="timeline-box"><h3>3 · FlixBus nach Budapest</h3><p>FlixBus nennt Nachtbusse, bis zu 13 tägliche Verbindungen, letzte Abfahrt bis 23:00, ab 48,98 € und ab 13 Stunden. Die konkrete Fahrt ist datumsabhängig.</p></div></div></div>
           <p class="day-tip"><b>Realistisches Budget:</b> ca. 78–95 € bis Budapest ohne Hotel. Weiter nach München kostet separat; dafür kann der Nachtbus eine Unterkunft ersetzen.</p>
