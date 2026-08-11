@@ -107,3 +107,81 @@ function addStopoverGems(){if(!location.pathname.endsWith('return.html')||docume
 addStopoverGems();
 function addConstantaRoutePlan(){const key=location.pathname.split('/').pop().replace('.html','');if(key!=='constanta'||document.querySelector('.constanta-route-plan'))return;const cards=document.querySelectorAll('.overview .booking-card');if(cards[0])cards[0].innerHTML=`<div class="lang-de"><div class="section-kicker">ROUTENENTSCHEIDUNG · 26.08.</div><h3>Constanța eher als Tagesstopp</h3><div class="booking-line"><span>Übernachtung</span><b>nicht fest einplanen</b></div><div class="booking-line"><span>Idee</span><b>Abend in der Stadt, dann weiter nach Tulcea</b></div><div class="booking-line"><span>Ersparnis</span><b>ca. 30–50 € für eine Nacht</b></div><p class="muted">Nur in Constanța schlafen, wenn der konkrete Spätbus nach Tulcea für den 26.08. nicht verfügbar ist.</p></div><div class="lang-uk" hidden><div class="section-kicker">РІШЕННЯ ЩОДО МАРШРУТУ · 26.08.</div><h3>Констанца радше як денна зупинка</h3><div class="booking-line"><span>Ночівля</span><b>не планувати заздалегідь</b></div><div class="booking-line"><span>Ідея</span><b>вечір у місті, потім далі до Тулчі</b></div><div class="booking-line"><span>Економія</span><b>прибл. 30–50 € за ніч</b></div><p class="muted">Ночувати в Констанці лише якщо конкретний пізній автобус до Тулчі 26.08. недоступний.</p></div>`;if(cards[1])cards[1].innerHTML=`<div class="lang-de"><div class="section-kicker">ANKUNFT · AKTUELLER ROUTENSTAND</div><h3>Varna → Constanța</h3><div class="booking-line"><span>26.08.</span><b>ca. 14:00 → 16:40 · rund 2:40 Std.</b></div><div class="booking-line"><span>Preis</span><b>ca. 25–26 € p. P.</b></div><div class="booking-line"><span>Vor Ort</span><b>Casino, Promenade, Altstadt, Abendessen</b></div><p class="muted">Die konkrete Abfahrt für den 26.08. vor dem Kauf nochmals öffnen; Grenz- und Verspätungspuffer nicht wegoptimieren.</p></div><div class="lang-uk" hidden><div class="section-kicker">ПРИБУТТЯ · АКТУАЛЬНИЙ МАРШРУТ</div><h3>Варна → Констанца</h3><div class="booking-line"><span>26.08.</span><b>прибл. 14:00 → 16:40 · близько 2:40 год.</b></div><div class="booking-line"><span>Ціна</span><b>прибл. 25–26 € з особи</b></div><div class="booking-line"><span>На місці</span><b>Казино, набережна, старе місто, вечеря</b></div><p class="muted">Конкретний рейс на 26.08. ще раз відкрити перед оплатою; залишити запас на кордон і затримки.</p></div>`;const target=document.querySelector('.next-prev');if(!target)return;const section=document.createElement('section');section.className='section callout constanta-route-plan';section.innerHTML=`<div class="lang-de"><div class="section-kicker">OPTIONALE TAGESROUTE · OHNE FESTE NACHT</div><h2>Ein Abend am Meer, dann direkt weiter</h2><div class="timeline"><div class="timeline-row"><div class="timeline-date">26.08. · 14:00–16:40</div><div class="timeline-box"><h3>Varna → Constanța</h3><p>Bus bis Constanța. Nach Ankunft Gepäck verstauen bzw. leicht weitertragen und direkt Richtung Casino/Altstadt gehen.</p></div></div><div class="timeline-row"><div class="timeline-date">26.08. · 17:00–21:30</div><div class="timeline-box"><h3>Kurzer Stadtbogen</h3><p>Casino-Promenade, Piața Ovidiu, römische Mosaike oder Moschee, danach günstiges Abendessen. Das ist genug für einen guten Dreh, ohne den Stopp zu überladen.</p></div></div><div class="timeline-row"><div class="timeline-date">26.08. · abends</div><div class="timeline-box"><h3>Variante A · direkt weiter</h3><p>Nur nehmen, wenn ein konkreter Spätbus Constanța → Tulcea am 26.08. im Checkout bestätigt wird. Nicht mit einem ungeprüften „letzten Bus“ planen.</p></div></div><div class="timeline-row"><div class="timeline-date">27.08. · 06:30–08:38</div><div class="timeline-box"><h3>Variante B · sicherer Fallback</h3><p>Wenn kein Spätbus passt: früh schlafen und den geprüften Bus Constanța → Tulcea nehmen. Aktueller Stand: ca. 2:08 Std., 39 Lei. Damit bleibt in Tulcea trotzdem fast der ganze 27.08.</p></div></div></div><p><a class="place-link" href="https://12go.asia/en/travel/varna/constanta" target="_blank" rel="noopener">Varna → Constanța prüfen ↗</a><a class="place-link" href="https://www.autogari.ro/Transport/Constanta-Tulcea?zi=+1" target="_blank" rel="noopener">Constanța → Tulcea prüfen ↗</a></p><p class="muted">Faktenstand 11.08.2026. Der 06:30-Bus ist der belastbare Fallback; eine direkte Abendweiterfahrt wird erst nach konkreter Datumsprüfung zur Option.</p></div><div class="lang-uk" hidden><div class="section-kicker">ДЕННИЙ МАРШРУТ · БЕЗ ФІКСОВАНОЇ НОЧІВЛІ</div><h2>Вечір біля моря, потім далі</h2><div class="timeline"><div class="timeline-row"><div class="timeline-date">26.08. · 14:00–16:40</div><div class="timeline-box"><h3>Варна → Констанца</h3><p>Автобус до Констанци. Після прибуття залишити багаж і одразу йти до казино та старого міста.</p></div></div><div class="timeline-row"><div class="timeline-date">26.08. · 17:00–21:30</div><div class="timeline-box"><h3>Короткий міський маршрут</h3><p>Набережна казино, Piața Ovidiu, римська мозаїка або мечеть, потім недорога вечеря. Цього достатньо для хорошого відео.</p></div></div><div class="timeline-row"><div class="timeline-date">26.08. · увечері</div><div class="timeline-box"><h3>Варіант A · їхати далі</h3><p>Лише якщо конкретний пізній автобус Констанца → Тулча на 26.08. підтверджений під час оплати. Не покладатися на неперевірений «останній автобус».</p></div></div><div class="timeline-row"><div class="timeline-date">27.08. · 06:30–08:38</div><div class="timeline-box"><h3>Варіант B · надійний запасний план</h3><p>Якщо вечірній автобус не підходить: ночівля й перевірений ранковий автобус Констанца → Тулча. Актуально: близько 2:08 год., 39 леїв. У Тулчі все одно залишиться майже весь день.</p></div></div></div><p><a class="place-link" href="https://12go.asia/en/travel/varna/constanta" target="_blank" rel="noopener">Перевірити Варна → Констанца ↗</a><a class="place-link" href="https://www.autogari.ro/Transport/Constanta-Tulcea?zi=+1" target="_blank" rel="noopener">Перевірити Констанца → Тулча ↗</a></p><p class="muted">Стан фактів 11.08.2026. Рейс 06:30 — надійний запасний план; вечірній переїзд стає варіантом лише після перевірки конкретної дати.</p></div>`;target.before(section);}
 addConstantaRoutePlan();
+
+function addReturnCityStops(){
+  if(!location.pathname.endsWith('return.html')||document.querySelector('.return-city-stops'))return;
+  const target=document.querySelector('.next-prev');
+  if(!target)return;
+  const section=document.createElement('section');
+  section.className='section return-city-stops';
+  section.innerHTML=`
+    <div class="lang-de">
+      <div class="section-kicker">KURZER STADT-STOP · 11.–13.09.</div>
+      <h2>Drei neue Rückreise-Juwelen</h2>
+      <p class="section-lead">Drei echte Mini-Routen mit Stadtzeit statt einer reinen Flughafen-Umsteige-Kette. Preise sind recherchierte Richtwerte; getrennte Tickets und der genaue Anschluss müssen im Checkout zusammenpassen.</p>
+      <div class="detail-grid">
+        <article class="day-card day-story">
+          <div class="day-story-head"><div><div class="section-kicker">🇷🇴 → 🇦🇹 · 11.09.</div><h3>⏱️ Bukarest kompakt → Wien</h3></div><b class="day-cost">ab ca. 51 €</b></div>
+          <p class="day-vibe">Stadtbesuch am Vormittag · anschließend direkt nach Wien</p>
+          <p class="day-hook"><b>Video-Hook:</b> Gara de Nord, Calea Victoriei und Altstadt in einem kompakten „4 Stunden Bukarest“-Kapitel.</p>
+          <div class="day-block"><div class="booking-line"><span>07:50–08:55</span><b>Wizz Air · RMO → OTP · 29 €</b></div><p>Die bereits geprüfte Morgenverbindung bringt euch früh genug in die Stadt.</p></div>
+          <div class="day-block"><div class="booking-line"><span>09:35–13:45</span><b>Gara de Nord → Calea Victoriei → Altstadt</b></div><p>Mit CFR-Zug/ÖPNV und kleinem Lunch; spätestens am frühen Nachmittag zurück zum Flughafen.</p></div>
+          <div class="day-block"><div class="booking-line"><span>ab Nachmittag</span><b>OTP → VIE direkt · Ryanair ab 16,99 €</b></div><p>Direktflüge sind auf der Strecke verfügbar. Die konkrete Uhrzeit am 11.09. separat prüfen und mindestens 2,5–3 Stunden Puffer einplanen.</p></div>
+          <p class="day-tip"><b>Budget:</b> ca. 51–65 € bis Wien plus Weiterfahrt nach Tirol/Deutschland. Keine geschützte Verbindung, nur Handgepäck sinnvoll.</p>
+          <p><a class="place-link" target="_blank" rel="noopener" href="https://flights.booking.com/flights/RMO-OTP/?type=ONEWAY&amp;adults=1&amp;cabinClass=ECONOMY&amp;from=RMO&amp;to=OTP&amp;depart=2026-09-11">RMO → OTP prüfen ↗</a><a class="place-link" target="_blank" rel="noopener" href="https://www.ryanair.com/flights/gb/en/flights-from-bucharest-to-vienna">OTP → VIE prüfen ↗</a></p>
+        </article>
+        <article class="day-card day-story">
+          <div class="day-story-head"><div><div class="section-kicker">🇵🇱 · 12.–13.09.</div><h3>🌃 Spät nach Modlin → Warschau-Tag</h3></div><b class="day-cost">ca. 86–98 €</b></div>
+          <p class="day-vibe">Eine Nacht · Stadtvormittag · Bus nach Berlin</p>
+          <p class="day-hook"><b>Video-Hook:</b> Nachtankunft, erster Kaffee in Warschau, Weichselufer und Altstadt – ein sauberer Mini-Roadtrip.</p>
+          <div class="day-block"><div class="booking-line"><span>12.09. · 22:50–23:35</span><b>Wizz Air W61422 · RMO → WMI · ab ca. 28 €</b></div><p>Der Flug ist laut Flugplan dienstags, donnerstags und samstags bis 24.10.2026 vorgesehen; der 12.09. fällt auf Samstag.</p></div>
+          <div class="day-block"><div class="booking-line"><span>13.09. · morgens</span><b>Modlin → Warschau · ca. 6–8 €</b></div><p>Nur mit leichtem Gepäck direkt in die Innenstadt und einen kompakten Stadtbogen drehen.</p></div>
+          <div class="day-block"><div class="booking-line"><span>13.09. · später</span><b>Warschau → Berlin · FlixBus ab ca. 32 €</b></div><p>Ankunft in Deutschland voraussichtlich erst spät am 13.09.; für „spätestens mittags zuhause“ ist diese Variante ungeeignet.</p></div>
+          <p class="day-tip"><b>Budget:</b> Flug, Transfer, Hostel und Bus ergeben grob 86–98 € p. P. – nicht der billigste Heimweg, aber der stärkste Stadt-Stop.</p>
+          <p><a class="place-link" target="_blank" rel="noopener" href="https://www.flight.info/W61422">W61422-Flugplan prüfen ↗</a><a class="place-link" target="_blank" rel="noopener" href="https://global.flixbus.com/bus-routes/bus-warsaw-berlin">Warschau → Berlin prüfen ↗</a></p>
+        </article>
+        <article class="day-card day-story">
+          <div class="day-story-head"><div><div class="section-kicker">🇷🇴 → 🇭🇺 · 11./12.09.</div><h3>🌉 Bukarest → Budapest per Nachtbus</h3></div><b class="day-cost">ab ca. 78 €</b></div>
+          <p class="day-vibe">Kurzer Bukarest-Stopp · Nachtfahrt · Budapest am 12./13.09.</p>
+          <p class="day-hook"><b>Video-Hook:</b> Zwei Hauptstädte, ein Nachtbus: Kontrast zwischen Bukarests breiten Boulevards und Budapests Donauufer.</p>
+          <div class="day-block"><div class="booking-line"><span>11. oder 12.09. · morgens</span><b>RMO → OTP · ab 29 €</b></div><p>Den Morgenflug mit dem bestehenden Bukarest-Stopover kombinieren; die genaue Flugverfügbarkeit für den gewählten Tag im Booking-Link checken.</p></div>
+          <div class="day-block"><div class="booking-line"><span>tagsüber</span><b>4–5 Stunden Bukarest</b></div><p>Gara de Nord, Calea Victoriei, Altstadt und Lunch – nicht mehr hineinpacken, damit die Busfahrt realistisch bleibt.</p></div>
+          <div class="day-block"><div class="booking-line"><span>abends/nachts</span><b>FlixBus → Budapest · ab 48,98 € · ab 13 Std.</b></div><p>FlixBus nennt mehrere tägliche Verbindungen, Nachtbusse und eine letzte Abfahrt bis 23:00; die konkrete Verbindung ist datumsabhängig.</p></div>
+          <p class="day-tip"><b>Budget:</b> ca. 78–95 € bis Budapest, ohne Hotel. Bis München kommen je nach Bus nochmals etwa 44 € hinzu.</p>
+          <p><a class="place-link" target="_blank" rel="noopener" href="https://flights.booking.com/flights/RMO-OTP/?type=ONEWAY&amp;adults=1&amp;cabinClass=ECONOMY&amp;from=RMO&amp;to=OTP&amp;depart=2026-09-11">RMO → OTP prüfen ↗</a><a class="place-link" target="_blank" rel="noopener" href="https://global.flixbus.com/bus-routes/bus-bucharest-budapest">Bukarest → Budapest prüfen ↗</a></p>
+        </article>
+      </div>
+    </div>
+    <div class="lang-uk" hidden>
+      <div class="section-kicker">КОРОТКА ЗУПИНКА В МІСТІ · 11–13.09.</div>
+      <h2>Три нові варіанти повернення</h2>
+      <p class="section-lead">Три справжні міні-маршрути з часом на місто, а не лише пересадка в аеропорту. Ціни — досліджені орієнтири; окремі квитки й точний стикувальний час перевірити під час оплати.</p>
+      <div class="detail-grid">
+        <article class="day-card"><div class="day-story-head"><div><div class="section-kicker">🇷🇴 → 🇦🇹 · 11.09.</div><h3>⏱️ Бухарест → Відень</h3></div><b class="day-cost">від прибл. 51 €</b></div><p>Ранковий RMO → OTP за 29 €, коротка прогулянка Бухарестом, потім прямий OTP → VIE від 16,99 €. Реалістично від 51–65 € до Відня плюс подальша дорога. Точний рейс на 11.09. і запас часу перевірити окремо.</p><p><a class="place-link" target="_blank" rel="noopener" href="https://www.ryanair.com/flights/gb/en/flights-from-bucharest-to-vienna">Перевірити OTP → VIE ↗</a></p></article>
+        <article class="day-card"><div class="day-story-head"><div><div class="section-kicker">🇵🇱 · 12–13.09.</div><h3>🌃 Modlin → Варшава → Берлін</h3></div><b class="day-cost">прибл. 86–98 €</b></div><p>W61422 12.09. 22:50–23:35, ніч у Варшаві, міський ранок 13.09. і FlixBus до Берліна. Виходить пізніше до Німеччини; для прибуття додому до обіду не підходить.</p><p><a class="place-link" target="_blank" rel="noopener" href="https://www.flight.info/W61422">Перевірити W61422 ↗</a><a class="place-link" target="_blank" rel="noopener" href="https://global.flixbus.com/bus-routes/bus-warsaw-berlin">Перевірити автобус ↗</a></p></article>
+        <article class="day-card"><div class="day-story-head"><div><div class="section-kicker">🇷🇴 → 🇭🇺 · 11/12.09.</div><h3>🌉 Бухарест → Будапешт</h3></div><b class="day-cost">від прибл. 78 €</b></div><p>Ранковий рейс до OTP, 4–5 годин у Бухаресті, потім нічний FlixBus до Будапешта від 48,98 € і від 13 годин. Разом приблизно 78–95 € без готелю; точний автобус залежить від дати.</p><p><a class="place-link" target="_blank" rel="noopener" href="https://global.flixbus.com/bus-routes/bus-bucharest-budapest">Перевірити FlixBus ↗</a></p></article>
+      </div>
+    </div>`;
+  target.before(section);
+}
+
+function decorateNavigation(){
+  const icons={'Sehenswürdigkeit':'🏛️','Restaurant & Café':'🍽️','Hidden Spot':'🕵️','Erlebnis & Video':'🎥'};
+  document.querySelectorAll('.category-choice[data-filter]').forEach(btn=>{
+    const span=btn.querySelector('span');
+    if(!span||span.dataset.decorated)return;
+    const key=btn.dataset.filter;
+    span.textContent=(key==='all'?'🧭':(icons[key]||'✨'))+' '+span.textContent;
+    span.dataset.decorated='1';
+  });
+  const variants=['🌅','🧭','🌙'];
+  document.querySelectorAll('.day-story-head h3').forEach((h,i)=>{
+    if(h.dataset.decorated)return;
+    h.textContent=variants[i%variants.length]+' '+h.textContent;
+    h.dataset.decorated='1';
+  });
+}
+
+addReturnCityStops();
+decorateNavigation();
+document.querySelectorAll('[data-lang]').forEach(btn=>btn.addEventListener('click',()=>setTimeout(decorateNavigation,0)));
