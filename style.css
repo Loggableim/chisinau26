@@ -43,3 +43,11 @@
 .section h2,.day-card h3,.day-story-head h3,.timeline-box h3,.place-body h3{color:var(--ink)!important;text-shadow:none!important}
 .callout h2,.callout h3{color:#fff!important}
 .day-story-head,.timeline-box,.day-hook{background:var(--card)!important}
+.return-submenu{position:relative;color:#ded9ec;font-size:.84rem}
+.return-submenu summary{list-style:none;cursor:pointer;padding:8px 10px;border-radius:999px;white-space:nowrap}
+.return-submenu summary::-webkit-details-marker{display:none}
+.return-submenu[open] summary,.return-submenu summary:hover{background:#ff3ea526;color:#fff}
+.return-submenu-links{position:absolute;z-index:20;right:0;top:calc(100% + 6px);display:grid;min-width:210px;padding:7px;background:#17112d;border:1px solid #ff3ea566;border-radius:14px;box-shadow:0 12px 30px #0008}
+.return-submenu-links a{color:#ded9ec!important;text-decoration:none;padding:10px 12px;border-radius:9px;white-space:nowrap}
+.return-submenu-links a:hover,.return-submenu-links a.active{background:#ff3ea526;color:#fff!important}
+@media(max-width:620px){.return-submenu{order:4}.return-submenu-links{position:fixed;left:12px;right:12px;top:auto;margin-top:4px}.return-submenu summary{min-height:40px;display:inline-flex;align-items:center}}

@@ -299,3 +299,18 @@ function addRoadFlightNav(){
   });
 }
 addRoadFlightNav();
+
+function buildReturnSubmenu(){
+  const activeReturn=location.pathname.endsWith('return.html');
+  const activeTrips=location.pathname.endsWith('return-trips.html');
+  document.querySelectorAll('.navlinks').forEach(nav=>{
+    const oldReturn=nav.querySelector('a[href="return.html"]');
+    const oldTrips=nav.querySelector('a[href="return-trips.html"]');
+    if(oldReturn)oldReturn.remove();
+    if(oldTrips)oldTrips.remove();
+    if(nav.querySelector('.return-submenu'))return;
+    nav.insertAdjacentHTML('beforeend',`<details class="return-submenu" ${activeReturn||activeTrips?'open':''}><summary>↩️ Rückreise</summary><div class="return-submenu-links"><a class="${activeReturn?'active':''}" href="return.html">✈️ Direktflüge</a><a class="${activeTrips?'active':''}" href="return-trips.html">🚌 Road-/Flight-Trips</a></div></details>`);
+  });
+}
+buildReturnSubmenu();
+document.querySelectorAll('[data-lang]').forEach(btn=>btn.addEventListener('click',()=>setTimeout(buildReturnSubmenu,0)));
