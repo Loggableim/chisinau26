@@ -311,4 +311,9 @@ function repairMojibake(root){
   nodes.forEach(node=>{if(marker.test(node.nodeValue))node.nodeValue=decode(node.nodeValue)});
 }
 repairMojibake(document.body);
+document.querySelectorAll('.source-status-banner').forEach(box=>{
+  const uk=box.querySelector('.lang-uk'),de=box.querySelector('.lang-de');
+  if(de)de.innerHTML='<div class="section-kicker">GASTRO-STATUS</div><h2>Aktive Orte behalten, Fragliches markieren</h2><p>Aktive Einträge bleiben drin. Unklare oder geschlossene Cafés werden nur optional geführt.</p>';
+  if(uk)uk.innerHTML='<div class="section-kicker">СТАН ЗАКЛАДІВ</div><h2>Залишаємо активні місця, сумнівні позначаємо</h2><p>Актуальні заклади залишаються в списку. Невідомі або закриті кафе вказуються лише як необов’язкові.</p>';
+});
 new MutationObserver(records=>records.forEach(record=>record.addedNodes.forEach(node=>{if(node.nodeType===Node.ELEMENT_NODE)repairMojibake(node)}))).observe(document.body,{childList:true,subtree:true});
