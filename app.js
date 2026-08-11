@@ -273,3 +273,12 @@ function replaceWithDistinctReturnRoutes(){
 }
 
 replaceWithDistinctReturnRoutes();
+
+function scrubUndefinedText(){
+  const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
+  const nodes=[];
+  while(walker.nextNode())nodes.push(walker.currentNode);
+  nodes.forEach(node=>{if(/\bundefined\b/i.test(node.nodeValue))node.nodeValue=node.nodeValue.replace(/\bundefined\b/gi,'Weitere Optionen');});
+}
+scrubUndefinedText();
+new MutationObserver(scrubUndefinedText).observe(document.body,{childList:true,subtree:true});

@@ -39,3 +39,7 @@
 .return-city-stops .day-story:nth-child(2){border-color:#b6ff2e55!important}
 .return-city-stops .day-story:nth-child(3){border-color:#ffb00066!important}
 @media(max-width:620px){.category-menu{padding:8px;border-radius:16px}.category-choice{min-height:100px!important}.section h2{max-width:none}}
+/* force readable heading/card contrast even when dynamic inline styles are injected */
+.section h2,.day-card h3,.day-story-head h3,.timeline-box h3,.place-body h3{color:var(--ink)!important;text-shadow:none!important}
+.callout h2,.callout h3{color:#fff!important}
+.day-story-head,.timeline-box,.day-hook{background:var(--card)!important}
