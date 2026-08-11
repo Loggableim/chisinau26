@@ -382,6 +382,17 @@ function repairRepeatedEncoding(root){
 repairRepeatedEncoding(document.body);
 new MutationObserver(records=>{records.forEach(record=>record.addedNodes.forEach(node=>{if(node.nodeType===Node.ELEMENT_NODE)repairRepeatedEncoding(node)}))}).observe(document.body,{childList:true,subtree:true});
 
+// Final safety net for text that arrived already mojibaked from an older page cache.
+function repairVisibleLegacyText(root){
+  const suspicious=/[ÃÂÐÑâð]|�/;
+  const map={'€':0x80,'‚':0x82,'„':0x84,'…':0x85,'†':0x86,'‡':0x87,'ˆ':0x88,'‰':0x89,'Š':0x8a,'‹':0x8b,'Œ':0x8c,'Ž':0x8e,'‘':0x91,'’':0x92,'“':0x93,'”':0x94,'•':0x95,'–':0x96,'—':0x97,'˜':0x98,'™':0x99,'š':0x9a,'›':0x9b,'œ':0x9c,'ž':0x9e,'Ÿ':0x9f};
+  const decode=value=>{let out=value;for(let i=0;i<3&&suspicious.test(out);i++){try{const bytes=[...out].map(ch=>map[ch]??ch.charCodeAt(0));if(bytes.some(n=>n>255))break;const next=new TextDecoder('utf-8',{fatal:true}).decode(new Uint8Array(bytes));if(next===out)break;out=next}catch{break}}return out};
+  const walk=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);const nodes=[];while(walk.nextNode())nodes.push(walk.currentNode);
+  nodes.forEach(node=>{const fixed=decode(node.nodeValue);if(fixed!==node.nodeValue)node.nodeValue=fixed});
+}
+repairVisibleLegacyText(document.body);
+new MutationObserver(records=>records.forEach(record=>record.addedNodes.forEach(node=>{if(node.nodeType===Node.ELEMENT_NODE)repairVisibleLegacyText(node)}))).observe(document.body,{childList:true,subtree:true});
+
 function addVerifiedBucharestBusBerlin(){
   if(!location.pathname.endsWith('return-trips.html')||document.querySelector('.bucharest-bus-berlin'))return;
   const anchor=document.querySelector('.ground-facts');if(!anchor)return;
