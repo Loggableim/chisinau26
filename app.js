@@ -290,6 +290,17 @@ function scrubUndefinedText(){
 scrubUndefinedText();
 new MutationObserver(scrubUndefinedText).observe(document.body,{childList:true,subtree:true});
 
+function addReturnPriceConflictNotice(){
+  if(!location.pathname.endsWith('return.html')||document.querySelector('.return-price-conflict'))return;
+  const target=document.querySelector('.main > .section');
+  if(!target)return;
+  const section=document.createElement('section');
+  section.className='section callout return-price-conflict';
+  section.innerHTML='<div class="lang-de"><div class="section-kicker">PREISABGLEICH · DORTMUND · 09.09.</div><h2>DTM-Preis vor Zahlung nochmals öffnen</h2><p>Der Seitenstand enthält einen Booking-Snapshot von 64 €. Ein unabhängiger aktueller Suchtreffer nennt für denselben One-way-Tag 731 DKK. Weil diese Werte nicht übereinstimmen, behandle ich 64 € nicht als garantiert aktuell. Bitte den Booking-Checkout öffnen und nur den dort sichtbaren Endpreis verwenden.</p><a class="place-link" target="_blank" rel="noopener" href="https://www.trip.com/flights/city-rmo-airport-dtm/">Unabhängigen DTM-Treffer prüfen ↗</a></div><div class="lang-uk" hidden><div class="section-kicker">ПОРІВНЯННЯ ЦІНИ · ДОРТМУНД · 09.09.</div><h2>Перед оплатою ще раз відкрити ціну DTM</h2><p>На сторінці вказано Booking-знімок 64 €. Окремий актуальний пошуковий результат для того самого one-way дня показує 731 DKK. Через цю різницю 64 € не вважаємо гарантовано актуальною ціною. Використовуйте лише кінцеву суму в checkout Booking.</p><a class="place-link" target="_blank" rel="noopener" href="https://www.trip.com/flights/city-rmo-airport-dtm/">Перевірити незалежний результат DTM ↗</a></div>';
+  target.before(section);
+}
+addReturnPriceConflictNotice();
+
 function normalizeReturnHeader(){
   if(!location.pathname.endsWith('return.html'))return;
   const de=document.querySelector('.hero .lang-de .eyebrow');
