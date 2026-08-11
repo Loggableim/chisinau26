@@ -282,3 +282,12 @@ function scrubUndefinedText(){
 }
 scrubUndefinedText();
 new MutationObserver(scrubUndefinedText).observe(document.body,{childList:true,subtree:true});
+
+function normalizeReturnHeader(){
+  if(!location.pathname.endsWith('return.html'))return;
+  const de=document.querySelector('.hero .lang-de .eyebrow');
+  const uk=document.querySelector('.hero .lang-uk .eyebrow');
+  if(de)de.textContent='RÜCKREISE · FLEXIBLE DATEN · 3 ALTERNATIVKORRIDORE';
+  if(uk)uk.textContent='ПОВЕРНЕННЯ · ГНУЧКІ ДАТИ · 3 АЛЬТЕРНАТИВНІ КОРИДОРИ';
+}
+normalizeReturnHeader();
