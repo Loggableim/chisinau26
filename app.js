@@ -123,6 +123,20 @@ function addConstantaRoutePlan(){const key=location.pathname.split('/').pop().re
 addConstantaRoutePlan();function addSourceStatusBanner(){const key=location.pathname.split('/').pop().replace('.html','');if(key!=='constanta'&&key!=='varna')return;if(document.querySelector('.source-status-banner'))return;const host=document.querySelector('.main .section')||document.querySelector('.main');if(!host)return;const box=document.createElement('section');box.className='section callout source-status-banner';box.innerHTML=key==='constanta'?`<div class="lang-de"><div class="section-kicker">GASTRO-STATUS</div><h2>Aktive Orte behalten, Fragliches markieren</h2><p>Aktuell bestätigte Einträge bleiben drin. Ältere oder geschlossene Cafés werden nur noch dann gezeigt, wenn sie wirklich noch relevant sind.</p></div><div class="lang-uk" hidden><div class="section-kicker">СТАН ЗАКЛАДІВ</div><h2>Залишаємо активні місця, сумнівні позначаємо</h2><p>Підтверджені заклади залишаються на сторінці. Старі або закриті кафе показуємо лише за потреби.</p></div>`:`<div class="lang-de"><div class="section-kicker">GASTRO-STATUS</div><h2>Varna nur mit aktiven Treffern</h2><p>Die Varna-Seite zeigt nur Orte, die aktuell noch als aktiv oder sinnvoll prüfbar gelten.</p></div><div class="lang-uk" hidden><div class="section-kicker">СТАН ЗАКЛАДІВ</div><h2>У Варні — лише актуальні місця</h2><p>На сторінці Варни залишені місця, які вважаються активними або потребують перевірки перед візитом.</p></div>`;host.before(box);}
 addSourceStatusBanner();
 
+function addVenueExclusionNotes(){
+  const key=location.pathname.split('/').pop().replace('.html','');
+  const notes={
+    galati:{de:'Gossip Café ist im aktuellen Audit als dauerhaft geschlossen dokumentiert und deshalb nicht als Besuchstipp enthalten.',uk:'Gossip Café під час поточної перевірки позначено як остаточно закрите, тому його немає серед рекомендацій.'},
+    constanta:{de:'Luna Bistro Avi Garden ist im aktuellen Audit als dauerhaft geschlossen dokumentiert und deshalb nicht als Besuchstipp enthalten.',uk:'Luna Bistro Avi Garden під час поточної перевірки позначено як остаточно закрите, тому його немає серед рекомендацій.'}
+  };
+  const note=notes[key],target=document.querySelector('.next-prev');
+  if(!note||!target||document.querySelector('.venue-exclusion-note'))return;
+  const section=document.createElement('section');section.className='section callout venue-exclusion-note';
+  section.innerHTML=`<div class="lang-de"><div class="section-kicker">GEPRÜFTER AUSSCHLUSS · 11.08.2026</div><p>${note.de}</p></div><div class="lang-uk" hidden><div class="section-kicker">ПЕРЕВІРЕНЕ ВИКЛЮЧЕННЯ · 11.08.2026</div><p>${note.uk}</p></div>`;
+  target.before(section);
+}
+addVenueExclusionNotes();
+
 function addReturnCityStops(){
   return;
   if(!location.pathname.endsWith('return.html')||document.querySelector('.return-city-stops'))return;
