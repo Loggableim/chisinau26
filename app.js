@@ -452,6 +452,21 @@ function addIasiDortmundReturn(){
 }
 addIasiDortmundReturn();
 
+function trimReturnFaresToBudget(){
+  if(!location.pathname.endsWith('return.html'))return;
+  const table=document.querySelector('#return-price-table');if(!table)return;
+  const rate={US$:0.92,USD:0.92,'£':1.16,CAD:0.63,MXN:0.052,JPY:0.0063,AED:0.25,HKD:0.12,EUR:1,'€':1};
+  const rows=[...table.tBodies[0].rows];
+  const euroValue=text=>{const s=text.replace(/\s/g,'').replace(',','.');const m=s.match(/([0-9.]+)(US\$|USD|£|CAD|MXN|JPY|AED|HKD|EUR|€)/i);if(!m)return Infinity;return Number(m[1].replace(/\.(?=\d{3})/g,''))* (rate[m[2].toUpperCase()]??rate[m[2]]??Infinity)};
+  rows.forEach(row=>{row.hidden=euroValue(row.cells[2].textContent)>100});
+  const visible=rows.filter(row=>!row.hidden);const count=document.querySelector('#return-count');if(count)count.textContent=`${visible.length} konkrete Optionen unter 100 € im Fenster 06.–12.09.`;
+  const lead=document.querySelector('#return-price-table')?.closest('.section')?.querySelector('.section-lead');if(lead)lead.textContent='Bereinigt: Nur konkrete One-way-Preisanker bis 100 € Gegenwert bleiben sichtbar. Höhere Tarife und ungeeignete Fernziele sind ausgeblendet.';
+  const ukLead=document.querySelector('#return-price-table')?.closest('.section')?.querySelector('.lang-uk .section-lead');if(ukLead)ukLead.textContent='Очищено: залишено лише конкретні тарифи в один бік до еквівалента 100 €. Дорожчі та недоречні далекі напрямки приховано.';
+  ['return-filter','return-sort'].forEach(id=>document.getElementById(id)?.addEventListener('input',()=>setTimeout(trimReturnFaresToBudget,0)));
+  document.getElementById('return-sort')?.addEventListener('change',()=>setTimeout(trimReturnFaresToBudget,0));
+}
+trimReturnFaresToBudget();
+
 function addRejectedRouteNote(){
   if(!location.pathname.endsWith('return-trips.html')||document.querySelector('.rejected-route-note'))return;
   const target=document.querySelector('.ground-facts');if(!target)return;
