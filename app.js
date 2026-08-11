@@ -442,6 +442,8 @@ addDeutschlandticketFact();
 
 function addAccommodationNavigation(){const active=location.pathname.endsWith('accommodations.html');document.querySelectorAll('.navlinks').forEach(nav=>{if(!nav.querySelector('[href="accommodations.html"]'))nav.insertAdjacentHTML('beforeend',`<a class="${active?'active':''}" href="accommodations.html">${activeLanguage==='uk'?'Житло':'Unterkünfte'}</a>`);});}
 addAccommodationNavigation();
+function addIasiPragNavigation(){const active=location.pathname.endsWith('iasi-prag.html');document.querySelectorAll('.navlinks').forEach(nav=>{if(!nav.querySelector('[href="iasi-prag.html"]'))nav.insertAdjacentHTML('beforeend',`<a class="${active?'active':''}" href="iasi-prag.html">${activeLanguage==='uk'?'Ясси · Прага':'Iași · Prag'}</a>`);});}
+addIasiPragNavigation();
 
 function addIasiDortmundReturn(){
   if(!location.pathname.endsWith('return.html')||document.querySelector('.iasi-dortmund-return'))return;
@@ -451,6 +453,13 @@ function addIasiDortmundReturn(){
   target.before(section);
 }
 addIasiDortmundReturn();
+
+function addIasiPragReturn(){
+  if(!location.pathname.endsWith('return.html')||document.querySelector('.iasi-prag-return'))return;
+  const target=document.querySelector('.next-prev')||document.querySelector('main');if(!target)return;
+  const s=document.createElement('section');s.className='section iasi-prag-return';s.innerHTML='<div class="lang-de"><div class="section-kicker">OPTIONALER STOPP · 10.09.2026</div><h2>Iași → Prag · 13 € sichtbarer Preisanker</h2><article class="day-card day-story"><div class="booking-line"><span>18:15–19:10</span><b>Wizz Air · IAS → PRG · nonstop</b></div><p>Eine zusätzliche Route für den Heimweg: nach Iași weiter, abends nach Prag und von dort den Heimweg separat planen.</p><a class="place-link" href="iasi-prag.html">Stopp-Seite öffnen ↗</a> <a class="place-link" target="_blank" rel="noopener" href="https://flights.booking.com/flights/IAS.AIRPORT-PRG.AIRPORT?type=ONEWAY&amp;adults=1&amp;cabinClass=ECONOMY&amp;from=IAS.AIRPORT&amp;to=PRG.AIRPORT&amp;depart=2026-09-10&amp;sortBy=cheapest">Booking prüfen ↗</a></article></div><div class="lang-uk" hidden><div class="section-kicker">ДОДАТКОВА ЗУПИНКА · 10.09.2026</div><h2>Ясси → Прага · видима ціна 13 €</h2><article class="day-card day-story"><div class="booking-line"><span>18:15–19:10</span><b>Wizz Air · IAS → PRG · прямий рейс</b></div><p>Додатковий маршрут додому: доїхати до Ясс, увечері летіти до Праги, а далі планувати дорогу окремо.</p><a class="place-link" href="iasi-prag.html">Відкрити сторінку зупинки ↗</a> <a class="place-link" target="_blank" rel="noopener" href="https://flights.booking.com/flights/IAS.AIRPORT-PRG.AIRPORT?type=ONEWAY&amp;adults=1&amp;cabinClass=ECONOMY&amp;from=IAS.AIRPORT&amp;to=PRG.AIRPORT&amp;depart=2026-09-10&amp;sortBy=cheapest">Перевірити Booking ↗</a></article></div>';target.before(s);
+}
+addIasiPragReturn();
 
 function trimReturnFaresToBudget(){
   if(!location.pathname.endsWith('return.html'))return;
