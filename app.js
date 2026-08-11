@@ -390,3 +390,4 @@ function addVerifiedBucharestBusBerlin(){
   anchor.before(section);
 }
 addVerifiedBucharestBusBerlin();
+if(location.pathname.endsWith('return-trips.html'))document.body.classList.add('return-trips-page');
