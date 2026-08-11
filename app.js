@@ -231,3 +231,45 @@ function addDetailedReturnAlternatives(){
 }
 
 addDetailedReturnAlternatives();
+
+function replaceWithDistinctReturnRoutes(){
+  if(!location.pathname.endsWith('return.html')||document.querySelector('.distinct-return-routes'))return;
+  document.querySelectorAll('.return-city-stops,.detailed-return-alternatives,.stopover-plans,.stopover-gems').forEach(el=>el.remove());
+  const target=document.querySelector('.next-prev');
+  if(!target)return;
+  const section=document.createElement('section');
+  section.className='section distinct-return-routes';
+  section.innerHTML=`
+    <div class="lang-de">
+      <div class="section-kicker">KURZER STADT-STOP · 3 ECHTE ALTERNATIVROUTEN</div>
+      <h2>Nicht noch einmal Bukarest: drei andere Korridore</h2>
+      <p class="section-lead">Diese drei Pläne starten jeweils über einen anderen Verkehrsknoten. Daten sind bewusst flexibel gewählt; zuerst den günstigen Flugtag finden, dann Bus/Zug und gegebenenfalls eine Nacht darum bauen.</p>
+      <div class="detail-grid">
+        <article class="day-card day-story">
+          <div class="day-story-head"><div><div class="section-kicker">ROUTE 1 · 🇲🇩 → 🇷🇴 → 🇩🇪</div><h3>🚌 Chișinău → Suceava → Memmingen</h3></div><b class="day-cost">ca. 60–105 €</b></div>
+          <p class="day-vibe">Grenzbus · Suceava als Zwischenstopp · Direktflug ins Allgäu</p>
+          <div class="timeline"><div class="timeline-row"><div class="timeline-date">Tag 1 · morgens</div><div class="timeline-box"><h3>1 · Mit dem Bus nach Suceava</h3><p>Chișinău → Suceava: mehrere Busse pro Tag, etwa 5:55–8:00 Stunden, ab ca. 1.017 UAH. Grenzpuffer einplanen und nicht am selben Tag auf einen knappen Flug wetten.</p></div></div><div class="timeline-row"><div class="timeline-date">Tag 1 · abends</div><div class="timeline-box"><h3>2 · Suceava filmen</h3><p>Kurzer Altstadt-/Festungs-Stopp und günstige Nacht in Suceava. Das ist ein echter Zwischenort, nicht nur ein Flughafenwechsel.</p></div></div><div class="timeline-row"><div class="timeline-date">Tag 2 · mittags</div><div class="timeline-box"><h3>3 · SCV → FMM</h3><p>Wizz Air Malta fliegt Suceava → Memmingen dreimal pro Woche, rund 2:10 Stunden, meist um die Mittagszeit. Von Memmingen weiter per Allgäu Airport Express oder Bahn.</p></div></div></div>
+          <p class="day-tip"><b>Budgetlogik:</b> Bus ca. 20–30 €, eine günstige Nacht ca. 15–30 €, Flug und Transfer nach Verfügbarkeit. Stark für Tirol/Bayern; Flugtag zuerst suchen.</p>
+          <p><a class="place-link" target="_blank" rel="noopener" href="https://bus.ua/en/route/chisinaumd-suceavaro">Chișinău → Suceava prüfen ↗</a> <a class="place-link" target="_blank" rel="noopener" href="https://www.flightconnections.com/de/fl%C3%BCge-von-scv-nach-fmm">SCV → Memmingen prüfen ↗</a></p>
+        </article>
+        <article class="day-card day-story">
+          <div class="day-story-head"><div><div class="section-kicker">ROUTE 2 · 🇲🇩 → 🇷🇴 → 🇩🇪</div><h3>🚐 Chișinău → Iași → Dortmund</h3></div><b class="day-cost">ca. 55–100 €</b></div>
+          <p class="day-vibe">Kürzerer Grenztransfer · Iași-Stadt · Direktflug ins Ruhrgebiet</p>
+          <div class="timeline"><div class="timeline-row"><div class="timeline-date">Tag 1 · vormittags</div><div class="timeline-box"><h3>1 · Chișinău → Iași</h3><p>Mehrere Busanbieter fahren nach Iași; Tickets werden ab etwa 300 MDL angeboten. Für den Grenzübergang mehrere Stunden Reserve einbauen.</p></div></div><div class="timeline-row"><div class="timeline-date">Tag 1 · nachmittags</div><div class="timeline-box"><h3>2 · Iași kompakt</h3><p>Palast der Kultur, Boulevard Ștefan cel Mare und ein günstiger Abend in der Stadt. Übernachtung nahe Zentrum oder Flughafen, je nach Flugtag.</p></div></div><div class="timeline-row"><div class="timeline-date">Tag 2 · morgens</div><div class="timeline-box"><h3>3 · IAS → DTM</h3><p>Wizz Air Malta bietet Iași → Dortmund direkt etwa dreimal pro Woche an. Dortmund ist für Marktheidenfeld ein deutlich sinnvollerer Ankunftskorridor als Berlin.</p></div></div></div>
+          <p class="day-tip"><b>Budgetlogik:</b> Bus grob 15–25 €, Nacht ca. 15–30 €, Flug dynamisch; realistisch etwa 55–100 € plus Stadtverkehr. Kein Bukarest-Umweg.</p>
+          <p><a class="place-link" target="_blank" rel="noopener" href="https://autogari.md/en/bus/chisinau/iasi">Chișinău → Iași prüfen ↗</a> <a class="place-link" target="_blank" rel="noopener" href="https://www.directflights.com/IAS-DTM">IAS → Dortmund prüfen ↗</a></p>
+        </article>
+        <article class="day-card day-story">
+          <div class="day-story-head"><div><div class="section-kicker">ROUTE 3 · 🇲🇩 → 🇵🇱 → 🇩🇪</div><h3>🌃 Chișinău → Warschau → Berlin</h3></div><b class="day-cost">ca. 86–98 €</b></div>
+          <p class="day-vibe">Direktflug nach Modlin · Warschau als echter Stopp · Weiterfahrt im Bus</p>
+          <div class="timeline"><div class="timeline-row"><div class="timeline-date">Tag 1 · 22:50–23:35</div><div class="timeline-box"><h3>1 · RMO → WMI</h3><p>Wizz Air W61422 fliegt Chișinău → Modlin laut Flugplan dienstags, donnerstags und samstags bis 24.10.2026. Späte Ankunft bedeutet: Nacht in Warschau/Modlin fest einplanen.</p></div></div><div class="timeline-row"><div class="timeline-date">Tag 2 · vormittags</div><div class="timeline-box"><h3>2 · Warschau als Tageskapitel</h3><p>Altstadt, Weichselufer oder Praga; bewusst nur einen Stadtbogen drehen und nicht den gesamten Tag verplanen.</p></div></div><div class="timeline-row"><div class="timeline-date">Tag 2 · später</div><div class="timeline-box"><h3>3 · Warschau → Berlin</h3><p>FlixBus fährt direkt nach Berlin. Von dort geht es mit Deutschlandticket weiter Richtung Marktheidenfeld; nach Tirol braucht es ein Extra-Ticket ab Kufstein.</p></div></div></div>
+          <p class="day-tip"><b>Budgetlogik:</b> Flug ca. 28 €, Transfer 6–8 €, Nacht 20–30 €, Bus ab etwa 32 € = ca. 86–98 € p. P. Nicht für Heimankunft am frühen 13.09. geeignet.</p>
+          <p><a class="place-link" target="_blank" rel="noopener" href="https://www.flight.info/W61422">W61422-Flugplan prüfen ↗</a> <a class="place-link" target="_blank" rel="noopener" href="https://global.flixbus.com/bus-routes/bus-warsaw-berlin">Warschau → Berlin prüfen ↗</a></p>
+        </article>
+      </div>
+    </div>
+    <div class="lang-uk" hidden><div class="section-kicker">КОРОТКА ЗУПИНКА · 3 СПРАВЖНІ АЛЬТЕРНАТИВИ</div><h2>Три інші коридори, не через Бухарест</h2><p class="section-lead">Кожен план починається з іншого транспортного вузла: Сучава, Ясси або Варшава.</p><div class="detail-grid"><article class="day-card"><div class="day-story-head"><div><div class="section-kicker">МАРШРУТ 1 · СУЧАВА → МЕММІНГЕН</div><h3>🚌 Кишинів → Сучава → Меммінген</h3></div><b class="day-cost">60–105 €</b></div><p>Автобус із Кишинева до Сучави, ніч і коротка прогулянка містом, потім прямий Wizz Air до Меммінгена тричі на тиждень. Посилання містять актуальні розклади.</p></article><article class="day-card"><div class="day-story-head"><div><div class="section-kicker">МАРШРУТ 2 · ЯССИ → ДОРТМУНД</div><h3>🚐 Кишинів → Ясси → Дортмунд</h3></div><b class="day-cost">55–100 €</b></div><p>Автобус до Ясс, вечір у місті, ніч і прямий Wizz Air до Дортмунда приблизно тричі на тиждень. Це інший коридор до Марктгайденфельда без Бухареста.</p></article><article class="day-card"><div class="day-story-head"><div><div class="section-kicker">МАРШРУТ 3 · ВАРШАВА → БЕРЛІН</div><h3>🌃 Кишинів → Варшава → Берлін</h3></div><b class="day-cost">86–98 €</b></div><p>Пізній рейс до Modlin, ніч, ранок у Варшаві й FlixBus до Берліна. Для раннього прибуття додому не підходить.</p></article></div></div>`;
+  target.before(section);
+}
+
+replaceWithDistinctReturnRoutes();
