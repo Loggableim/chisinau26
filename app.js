@@ -309,11 +309,11 @@ function clarifyBucharestStopover(){
 }
 
 function hideUnverifiedPriceRanges(){
-  const pattern=/\b(?:ab|ca\.?|circa|прибл\.?|від)\s*[0-9][0-9.,]*(?:\s*[–-]\s*[0-9][0-9.,]*)?\s*(?:€|EUR|US\$|CNY|RON|zł|PLN)/gi;
+  const pattern=/\b(?:ab|ca\.?|circa|прибл\.?|від)\s*[0-9][0-9.,]*(?:\s*[–-]\s*[0-9][0-9.,]*)?\s*(?:€|EUR|US\$|USD|CNY|RON|Lei|MDL|zł|PLN)/gi;
   document.querySelectorAll('.main .booking-line b,.main .day-cost,.main .day-hook,.main .source-note,.main p').forEach(el=>{
     if(el.closest('.return-price-conflict'))return;
     const replacement=el.closest('.lang-uk')?'Ціна відкрита':'Preis offen';
-    const range=/\b[0-9][0-9.,]*\s*[–-]\s*[0-9][0-9.,]*\s*(?:€|EUR|US\$|CNY|RON|zł|PLN)/gi;
+    const range=/\b[0-9][0-9.,]*\s*[–-]\s*[0-9][0-9.,]*\s*(?:€|EUR|US\$|USD|CNY|RON|Lei|MDL|zł|PLN)/gi;
     el.innerHTML=el.innerHTML.replace(pattern,replacement).replace(range,replacement);
   });
 }
@@ -321,8 +321,8 @@ hideUnverifiedPriceRanges();
 
 // Unicode-safe second pass for Ukrainian and legacy dynamic price labels.
 function hideUnverifiedPriceRangesUnicode(){
-  const approx=/\b(?:ab|ca\.?|circa|прибл\.?|від)\s*[0-9][0-9.,]*(?:\s*[–-]\s*[0-9][0-9.,]*)?\s*(?:€|EUR|US\$|CNY|RON|zł|PLN)/giu;
-  const range=/\b[0-9][0-9.,]*\s*[–-]\s*[0-9][0-9.,]*\s*(?:€|EUR|US\$|CNY|RON|zł|PLN)/giu;
+  const approx=/\b(?:ab|ca\.?|circa|прибл\.?|від)\s*[0-9][0-9.,]*(?:\s*[–-]\s*[0-9][0-9.,]*)?\s*(?:€|EUR|US\$|USD|CNY|RON|Lei|MDL|zł|PLN)/giu;
+  const range=/\b[0-9][0-9.,]*\s*[–-]\s*[0-9][0-9.,]*\s*(?:€|EUR|US\$|USD|CNY|RON|Lei|MDL|zł|PLN)/giu;
   document.querySelectorAll('.main .booking-line b,.main .day-cost,.main .day-hook,.main .source-note,.main p').forEach(el=>{
     if(el.closest('.return-price-conflict'))return;
     const replacement=el.closest('.lang-uk')?'Ціна відкрита':'Preis offen';
