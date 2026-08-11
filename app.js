@@ -391,3 +391,13 @@ function addVerifiedBucharestBusBerlin(){
 }
 addVerifiedBucharestBusBerlin();
 if(location.pathname.endsWith('return-trips.html'))document.body.classList.add('return-trips-page');
+
+function addResearchStamp(){
+  const key=location.pathname.split('/').pop().replace('.html','');
+  if(!['varna','constanta','tulcea','galati','chisinau'].includes(key)||document.querySelector('.research-stamp'))return;
+  const target=document.querySelector('.next-prev');if(!target)return;
+  const section=document.createElement('section');section.className='section research-stamp';
+  section.innerHTML='<div class="lang-de"><div class="section-kicker">RECHERCHE-FEED · STAND 11.08.2026</div><p><b>Preisregel:</b> Konkrete Beträge stehen nur mit Datum und sichtbarem Preisanker hier. Tagesplan-Budgets und unbestätigte Einstiegstarife bleiben offen; Betreiberzeiten und Buchbarkeit bitte vor Zahlung nochmals öffnen.</p></div><div class="lang-uk" hidden><div class="section-kicker">СТАН ДОСЛІДЖЕННЯ · 11.08.2026</div><p><b>Правило цін:</b> Конкретні суми показуємо лише з датою та видимою ціною. Бюджети планів дня й непідтверджені стартові тарифи залишаються відкритими; час роботи та наявність ще раз перевірити перед оплатою.</p></div>';
+  target.before(section);
+}
+addResearchStamp();

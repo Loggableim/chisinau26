@@ -70,6 +70,7 @@
 .return-submenu-links a:hover,.return-submenu-links a.active{background:#ff3ea526;color:#fff!important}
 @media(max-width:620px){.return-submenu{order:4}.return-submenu-links{position:fixed;left:12px;right:12px;top:auto;margin-top:4px}.return-submenu summary{min-height:40px;display:inline-flex;align-items:center}}
 .return-trips-page .main{max-width:1180px}
+.research-stamp{padding:15px 18px;border:1px solid #ff3ea54d;border-radius:16px;background:linear-gradient(120deg,#21142c,#142c25);color:#eee8f7;box-shadow:0 10px 26px #00000030}.research-stamp p{margin:5px 0 0;color:#cfc7df;font-size:.9rem}.research-stamp .section-kicker{color:#b6ff2e}
 .return-trips-page .callout{margin-bottom:28px}
 .return-trips-page .detail-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
 .return-trips-page .day-story{padding:0;overflow:hidden;display:flex;flex-direction:column;min-width:0}
