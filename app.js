@@ -304,6 +304,18 @@ function hideUnverifiedPriceRanges(){
 }
 hideUnverifiedPriceRanges();
 
+// Unicode-safe second pass for Ukrainian and legacy dynamic price labels.
+function hideUnverifiedPriceRangesUnicode(){
+  const approx=/\b(?:ab|ca\.?|circa|прибл\.?|від)\s*[0-9][0-9.,]*(?:\s*[–-]\s*[0-9][0-9.,]*)?\s*(?:€|EUR|US\$|CNY|RON|zł)/giu;
+  const range=/\b[0-9][0-9.,]*\s*[–-]\s*[0-9][0-9.,]*\s*(?:€|EUR|US\$|CNY|RON|zł)/giu;
+  document.querySelectorAll('.main .booking-line b,.main .day-cost,.main .day-hook,.main .source-note,.main p').forEach(el=>{
+    if(el.closest('.return-price-conflict'))return;
+    const replacement=el.closest('.lang-uk')?'Ціна відкрита':'Preis offen';
+    el.innerHTML=el.innerHTML.replace(approx,replacement).replace(range,replacement);
+  });
+}
+hideUnverifiedPriceRangesUnicode();
+
 function repairMojibake(root){
   const marker=/[ÃÂÐÑâ�]/;
   const cp1252={'€':0x80,'‚':0x82,'ƒ':0x83,'„':0x84,'…':0x85,'†':0x86,'‡':0x87,'ˆ':0x88,'‰':0x89,'Š':0x8a,'‹':0x8b,'Œ':0x8c,'Ž':0x8e,'‘':0x91,'’':0x92,'“':0x93,'”':0x94,'•':0x95,'–':0x96,'—':0x97,'˜':0x98,'™':0x99,'š':0x9a,'›':0x9b,'œ':0x9c,'ž':0x9e,'Ÿ':0x9f};
@@ -320,4 +332,4 @@ document.querySelectorAll('.source-status-banner').forEach(box=>{
 });
 // The status banner above is injected after the first repair pass.
 repairMojibake(document.body);
-new MutationObserver(records=>{records.forEach(record=>record.addedNodes.forEach(node=>{if(node.nodeType===Node.ELEMENT_NODE)repairMojibake(node)}));hideUnverifiedPriceRanges()}).observe(document.body,{childList:true,subtree:true});
+new MutationObserver(records=>{records.forEach(record=>record.addedNodes.forEach(node=>{if(node.nodeType===Node.ELEMENT_NODE)repairMojibake(node)}));hideUnverifiedPriceRanges();hideUnverifiedPriceRangesUnicode()}).observe(document.body,{childList:true,subtree:true});
