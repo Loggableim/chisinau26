@@ -292,3 +292,12 @@ function clarifyBucharestStopover(){
   s.querySelectorAll('.lang-de').forEach(el=>el.hidden=activeLanguage!=='de');
   s.querySelectorAll('.lang-uk').forEach(el=>el.hidden=activeLanguage!=='uk');
 }
+
+function hideUnverifiedPriceRanges(){
+  const pattern=/\b(?:ab|ca\.?|circa|прибл\.?|від)\s*[0-9][0-9.,]*(?:\s*[–-]\s*[0-9][0-9.,]*)?\s*(?:€|EUR|US\$|CNY|RON|zł)?/gi;
+  document.querySelectorAll('.main .booking-line b,.main .day-cost,.main .day-hook,.main .source-note,.main p').forEach(el=>{
+    if(el.closest('.return-price-conflict'))return;
+    el.innerHTML=el.innerHTML.replace(pattern,'Preis offen');
+  });
+}
+hideUnverifiedPriceRanges();
