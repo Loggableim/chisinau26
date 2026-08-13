@@ -503,9 +503,10 @@ function addDailyTripTimeline(){
   const main=document.querySelector('main');if(!main)return;
   const s=document.createElement('section');s.className='section daily-trip-timeline';
   const rows=[
-    ['24.08.','Varna','Ankunft HAM → VAR · Rech Dreams 1 bestätigt · 80 € / Nacht','Прибуття HAM → VAR · Rech Dreams 1 підтверджено · 80 € / ніч','booked'],
+    ['24.08.','Varna','Ankunft HAM → VAR · Rech Dreams 1 bestätigt · 159,79 € gesamt','Прибуття HAM → VAR · Rech Dreams 1 підтверджено · 159,79 € загалом','booked'],
     ['25.08.','Varna','Varna Winery als Fixpunkt · Rech Dreams 1','Varna Winery як фіксований пункт · Rech Dreams 1','fix'],
-    ['26.08.','Constanța','Tagesstopp sinnvoll · Weiterfahrt/Übernachtung offen','Денна зупинка · подальша дорога/ночівля відкриті','offen'],
+    ['26.08.','Constanța','Tagesstopp; Nacht 26./27.08. fehlt noch · Unterkunft offen','Денна зупинка; ніч 26/27.08. ще відкрита · житло не заброньовано','missing'],
+    ['26./27.08.','Constanța / Tulcea','LÜCKE · Übernachtung zwischen Tagesstopp und Casa Rico 2 fehlt','ПРОГАЛИНА · бракує ночівлі між денною зупинкою та Casa Rico 2','missing'],
     ['27.08.','Tulcea','Casa Rico 2 · gebucht · 1 Nacht','Casa Rico 2 · заброньовано · 1 ніч','booked'],
     ['28.08.','Galați','Garsoniera Centru · gebucht · 1 Nacht','Garsoniera Centru · заброньовано · 1 ніч','booked'],
     ['29.08.','Galați → Chișinău','Reisetag; Nacht 29./30.08. fehlt noch · bewusst offen','День переїзду; ніч 29/30.08. ще відкрита','missing'],
