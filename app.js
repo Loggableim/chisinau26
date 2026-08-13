@@ -503,8 +503,8 @@ function addDailyTripTimeline(){
   const main=document.querySelector('main');if(!main)return;
   const s=document.createElement('section');s.className='section daily-trip-timeline';
   const rows=[
-    ['24.08.','Varna','Ankunft HAM → VAR · Unterkunft storniert · neue Nacht offen','Прибуття HAM → VAR · житло скасовано · нова ніч відкрита','offen'],
-    ['25.08.','Varna','Varna Winery als Fixpunkt · Übernachtung offen','Varna Winery як фіксований пункт · ночівля відкрита','fix'],
+    ['24.08.','Varna','Ankunft HAM → VAR · Rech Dreams 1 bestätigt · 80 € / Nacht','Прибуття HAM → VAR · Rech Dreams 1 підтверджено · 80 € / ніч','booked'],
+    ['25.08.','Varna','Varna Winery als Fixpunkt · Rech Dreams 1','Varna Winery як фіксований пункт · Rech Dreams 1','fix'],
     ['26.08.','Constanța','Tagesstopp sinnvoll · Weiterfahrt/Übernachtung offen','Денна зупинка · подальша дорога/ночівля відкриті','offen'],
     ['27.08.','Tulcea','Casa Rico 2 · gebucht · 1 Nacht','Casa Rico 2 · заброньовано · 1 ніч','booked'],
     ['28.08.','Galați','Garsoniera Centru · gebucht · 1 Nacht','Garsoniera Centru · заброньовано · 1 ніч','booked'],
